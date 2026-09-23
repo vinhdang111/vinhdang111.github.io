@@ -6,7 +6,7 @@ I combine a foundation in accounting and audit with data analytics skills (SQL, 
 
 
 
-[LinkedIn](https://www.linkedin.com/in/thanhvinhdang2001/) ·  [Email](thanhvinhdang.work@gmail.com)
+[LinkedIn](https://www.linkedin.com/in/thanhvinhdang2001/) ·  [Email](mailto:thanhvinhdang.work@gmail.com)
 
 ---
 
