@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Thanh Vinh Dang — Financial Analyst / FP&A</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F3EC;
+    --ink:#191C1A;
+    --ledger:#1F4B44;
+    --gold:#A9762F;
+    --line:#D9D2BF;
+    --muted:#6B675C;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:720px;
+    margin:0 auto;
+    padding:5rem 1.5rem 6rem;
+  }
+  .figures{
+    display:flex;
+    gap:2rem;
+    flex-wrap:wrap;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.78rem;
+    color:var(--muted);
+    letter-spacing:.02em;
+    margin-bottom:2.5rem;
+  }
+  .figures span b{
+    color:var(--ledger);
+    font-weight:500;
+  }
+  h1{
+    font-family:'Newsreader',serif;
+    font-weight:500;
+    font-size:clamp(2.4rem,6vw,3.4rem);
+    line-height:1.05;
+    margin:0 0 .6rem;
+    opacity:0;
+    animation:rise .7s ease forwards;
+  }
+  @keyframes rise{
+    from{opacity:0;transform:translateY(10px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .role{
+    font-size:1.05rem;
+    color:var(--ledger);
+    font-weight:500;
+    margin-bottom:1.1rem;
+  }
+  .intro{
+    max-width:56ch;
+    color:var(--ink);
+    font-size:1rem;
+  }
+  .location{
+    margin-top:1.2rem;
+    font-size:.92rem;
+    color:var(--muted);
+  }
+  .location b{color:var(--ink);font-weight:500;}
+  .links{
+    margin-top:1.4rem;
+    font-size:.92rem;
+  }
+  .links a{
+    color:var(--ledger);
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+    padding-bottom:1px;
+  }
+  .links a:hover{border-color:var(--ledger);}
+  .links .sep{color:var(--line);margin:0 .7rem;}
+
+  .rule{
+    border:0;
+    border-top:1px solid var(--line);
+    margin:3.2rem 0 2.4rem;
+  }
+  h2{
+    font-family:'Newsreader',serif;
+    font-weight:500;
+    font-size:1.5rem;
+    margin:0 0 1.8rem;
+  }
+
+  .project{
+    padding:1.6rem 0 1.6rem 1.2rem;
+    border-left:2px solid var(--line);
+    margin-bottom:.4rem;
+    transition:border-color .2s ease;
+  }
+  .project:hover{border-left-color:var(--gold);}
+  .project.soon{opacity:.55;}
+  .project h3{
+    font-family:'Newsreader',serif;
+    font-weight:500;
+    font-size:1.2rem;
+    margin:0 0 .5rem;
+  }
+  .project h3 a{color:var(--ink);text-decoration:none;}
+  .project h3 a:hover{color:var(--ledger);}
+  .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.7rem;
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    margin-left:.6rem;
+    vertical-align:middle;
+  }
+  .project p{
+    margin:0 0 .8rem;
+    font-size:.95rem;
+    color:var(--ink);
+    max-width:60ch;
+  }
+  .stack{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.76rem;
+    color:var(--muted);
+  }
+  .stack b{color:var(--ledger);font-weight:500;}
+  .highlights{
+    font-size:.87rem;
+    color:var(--muted);
+    margin-top:.5rem;
+  }
+
+  .skillgrid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1.6rem;
+  }
+  .skillgrid div h4{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.7rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--gold);
+    margin:0 0 .5rem;
+    font-weight:500;
+  }
+  .skillgrid div p{
+    margin:0;
+    font-size:.9rem;
+    color:var(--ink);
+  }
+  @media (max-width:600px){
+    .skillgrid{grid-template-columns:1fr;}
+    .wrap{padding-top:3.5rem;}
+  }
+
+  footer{
+    margin-top:4rem;
+    padding-top:1.6rem;
+    border-top:1px solid var(--line);
+    font-size:.82rem;
+    color:var(--muted);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:.5rem;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="figures">
+    <span><b>2</b> projects shipped</span>
+    <span><b>50+</b> companies analyzed</span>
+    <span><b>4</b> target markets</span>
+  </div>
+
+  <h1>Thanh Vinh Dang</h1>
+  <div class="role">Accounting &amp; Audit background, transitioning into Data-driven Finance (FP&amp;A / Financial Analytics)</div>
+  <p class="intro">I combine a foundation in accounting and audit with data analytics skills (SQL, Python, Power BI) to build end-to-end financial analysis workflows — from raw data to business recommendations.</p>
+
+  <div class="links">
+    <a href="https://www.linkedin.com/in/thanhvinhdang2001/" target="_blank">LinkedIn</a>
+    <span class="sep">/</span>
+    <a href="mailto:thanhvinhdang.work@gmail.com">Email</a>
+    <span class="sep">/</span>
+    <a href="https://github.com/vinhdang111" target="_blank">GitHub</a>
+  </div>
+
+  <hr class="rule">
+
+  <h2>Projects</h2>
+
+  <div class="project">
+    <h3><a href="https://github.com/vinhdang111/french-equities-financial-analysis" target="_blank">French Equities Financial Analysis</a><span class="tag">Live</span></h3>
+    <p>End-to-end financial analytics covering ~50 major French-listed companies (CAC 40 / SBF 120). SQL for structured storage, Python for cleaning and revenue-growth forecasting, Power BI for a 3-page interactive dashboard.</p>
+    <div class="stack"><b>Stack —</b> Python, SQL, Power BI</div>
+    <div class="highlights">Pooled/panel regression forecasting model · sector-level profitability &amp; leverage analysis · documented handling of data-quality outliers (Atos, Vivendi)</div>
+  </div>
+
+  <div class="project soon">
+    <h3>Nestlé FP&amp;A Case Study<span class="tag">In progress</span></h3>
+    <p>Simulated end-to-end FP&amp;A workflow built on Nestlé's public financial disclosures — budget modeling, Actual vs. Budget variance analysis, and a business case for a strategic expansion decision.</p>
+    <div class="stack"><b>Stack —</b> Excel, Power BI</div>
+  </div>
+
+  <div class="project soon">
+    <h3>Project 3<span class="tag">Planned</span></h3>
+    <p>Details coming soon.</p>
+  </div>
+
+  <div class="project soon">
+    <h3>Project 4<span class="tag">Planned</span></h3>
+    <p>Details coming soon.</p>
+  </div>
+
+  <hr class="rule">
+
+  <h2>Skills</h2>
+  <div class="skillgrid">
+    <div>
+      <h4>Financial Analysis</h4>
+      <p>Financial modeling, budgeting, variance analysis, ratio analysis</p>
+    </div>
+    <div>
+      <h4>Data &amp; BI</h4>
+      <p>SQL, Python (pandas, scikit-learn), Power BI, Excel</p>
+    </div>
+    <div>
+      <h4>Domain</h4>
+      <p>Accounting, audit, corporate finance, data</p>
+    </div>
+  </div>
+
+  <footer>
+    <span>Thanh Vinh Dang</span>
+    <span>Updated 2026</span>
+  </footer>
+
+</div>
+</body>
+</html>
