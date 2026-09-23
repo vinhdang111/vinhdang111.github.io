@@ -143,6 +143,20 @@
     margin-top:.5rem;
   }
   .highlights b{color:var(--ledger);font-weight:500;}
+  .embed{
+    position:relative;
+    margin-top:1.1rem;
+    padding-top:62.25%; /* 600:373.5 aspect ratio, matches PBI's default frame */
+    border:1px solid var(--line);
+    background:#fff;
+    overflow:hidden;
+  }
+  .embed iframe{
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    border:0;
+  }
 
   .skillgrid{
     display:grid;
@@ -205,6 +219,9 @@
     <p>End-to-end financial analytics covering ~50 major French-listed companies (CAC 40 / SBF 120). SQL for structured storage, Python for cleaning and revenue-growth forecasting, Power BI for an interactive dashboard.</p>
     <div class="stack"><b>Stack —</b> Python, SQL, Jupyter Notebook, Power BI</div>
     <div class="highlights"><b>Highlights —</b> Pooled/panel regression forecasting model · sector-level profitability &amp; leverage analysis · free cash flow margin identified as a stronger growth signal than traditional profitability ratios (ROE)</div>
+    <div class="embed">
+      <iframe title="french_equities_dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiYjBmYTQzODQtODNjZC00YWVjLWFkN2YtM2IwY2YwMGZjMDVlIiwidCI6Ijk2OTJhM2QzLTJhMDgtNGVjOC1hMGJkLTFkYjM1NWViNDIzMCIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>
+    </div>
   </div>
 
   <div class="project soon">
