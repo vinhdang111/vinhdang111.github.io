@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Thanh Vinh Dang - Portfolio</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%231F4B44'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' fill='%23A9762F' text-anchor='middle'%3EV%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g3' x1='0' y1='1' x2='1' y2='0'%3E%3Cstop offset='0%25' stop-color='%230EA5E9'/%3E%3Cstop offset='100%25' stop-color='%238B5CF6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='32' fill='%230B0F1A'/%3E%3Cpath d='M16 16 L32 44 L48 16' stroke='url(%23g3)' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,6 +45,11 @@
   .figures span b{
     color:var(--ledger);
     font-weight:500;
+  }
+  .logo{
+    display:block;
+    margin-bottom:1rem;
+    border-radius:10px;
   }
   h1{
     font-family:'Newsreader',serif;
@@ -212,6 +217,16 @@
 <body>
 <div class="wrap">
 
+  <svg class="logo" width="40" height="40" viewBox="0 0 64 64" aria-hidden="true">
+    <defs>
+      <linearGradient id="glogo" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0%" stop-color="#0EA5E9"/>
+        <stop offset="100%" stop-color="#8B5CF6"/>
+      </linearGradient>
+    </defs>
+    <rect width="64" height="64" rx="32" fill="#0B0F1A"/>
+    <path d="M16 16 L32 44 L48 16" stroke="url(#glogo)" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
   <h1>Thanh Vinh Dang</h1>
   <div class="role">Accounting &amp; Audit background, transitioning into Data-driven Finance (FP&amp;A / Financial Analytics)</div>
   <p class="intro">I combine a foundation in accounting and audit with data analytics skills (SQL, Python, Power BI) to build end-to-end financial analysis workflows — from raw data to business recommendations.</p>
