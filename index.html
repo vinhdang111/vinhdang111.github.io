@@ -28,6 +28,62 @@
     z-index:999;
     transition:width .08s linear;
   }
+
+  /* Sticky Top Header on Scroll */
+  #sticky-header{
+    position:fixed;
+    top:0; left:0;
+    width:100%;
+    z-index:990;
+    background:rgba(246, 243, 236, 0.88);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    transform:translateY(-100%);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  #sticky-header.visible{
+    transform:translateY(0);
+    box-shadow:0 4px 20px rgba(0,0,0,0.04);
+  }
+  .sticky-inner{
+    max-width:720px;
+    margin:0 auto;
+    padding:.6rem 1.5rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .sticky-name{
+    font-family:'Newsreader',serif;
+    font-weight:500;
+    font-size:1.15rem;
+    color:var(--ink);
+    text-decoration:none;
+  }
+  .sticky-links{
+    display:flex;
+    gap:.6rem;
+  }
+  .sticky-links a{
+    color:var(--muted);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:30px;
+    height:30px;
+    border:1px solid var(--line);
+    border-radius:50%;
+    background:var(--paper);
+    transition:color .15s ease, border-color .15s ease, transform .15s ease;
+  }
+  .sticky-links a:hover{
+    transform:scale(1.08);
+  }
+  .sticky-links .link-linkedin:hover{color:#0A66C2;border-color:#0A66C2;}
+  .sticky-links .link-email:hover{color:#EA4335;border-color:#EA4335;}
+  .sticky-links .link-github:hover{color:#181717;border-color:#181717;}
+
   .reveal{
     opacity:0;
     transform:translateY(14px);
@@ -167,11 +223,9 @@
   .project:hover{
     border-left-color:var(--gold);
     transform:translateY(-3px);
-    /* Nền kính mỏng nhẹ giữ nguyên sắc vàng giấy đằng sau */
     background:rgba(255, 255, 255, 0.25);
     backdrop-filter:blur(6px);
     -webkit-backdrop-filter:blur(6px);
-    /* Bóng đổ dịu cùng viền phản quang cạnh trên của mặt kính */
     box-shadow:0 12px 24px -6px rgba(31, 75, 68, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.7);
   }
   .project.soon{opacity:.65;}
@@ -194,7 +248,6 @@
   .gh-mark{color:var(--muted);vertical-align:middle;}
   .project h3 a:hover{color:var(--ledger);}
   
-  /* Tag & Pulsing Live Badge */
   .tag{
     font-family:'IBM Plex Mono',monospace;
     font-size:.7rem;
@@ -246,7 +299,7 @@
   .embed{
     position:relative;
     margin-top:1.1rem;
-    padding-top:62.25%; /* 600:373.5 aspect ratio, matches PBI's default frame */
+    padding-top:62.25%;
     border:1px solid var(--line);
     background:#fff;
     overflow:hidden;
@@ -276,7 +329,6 @@
   }
   .dash-toggle:hover{background:var(--ledger);color:var(--paper);}
 
-  /* Skillgrid & Skill Badges */
   .skillgrid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -330,6 +382,25 @@
 </head>
 <body>
 <div id="progress-bar"></div>
+
+<!-- Sticky Quick Bar -->
+<div id="sticky-header">
+  <div class="sticky-inner">
+    <a href="#" class="sticky-name">Thanh Vinh Dang</a>
+    <div class="sticky-links">
+      <a class="link-linkedin" href="https://www.linkedin.com/in/thanhvinhdang2001/" target="_blank" aria-label="LinkedIn">
+        <svg width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.68H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+      </a>
+      <a class="link-email" href="mailto:thanhvinhdang.work@gmail.com" aria-label="Email">
+        <svg width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M22 5.5v13a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 18.5v-13A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5zm-2.2.3L12 11.1 4.2 5.8l-.7 1.1L12 12.7l8.5-5.8-.7-1.1z"/></svg>
+      </a>
+      <a class="link-github" href="https://github.com/vinhdang111" target="_blank" aria-label="GitHub">
+        <svg width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.38-2.03 1.02-2.75-.1-.26-.44-1.31.1-2.73 0 0 .83-.27 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.32 2.75-1.05 2.75-1.05.54 1.42.2 2.47.1 2.73.64.72 1.02 1.63 1.02 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
 <div class="wrap">
 
   <h1>Thanh Vinh Dang</h1>
@@ -417,16 +488,26 @@
   </footer>
 
 </div>
+
 <div id="cursor-arrow">
   <svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 5c-5.5 0-9.5 4.5-10 7 .5 2.5 4.5 7 10 7s9.5-4.5 10-7c-.5-2.5-4.5-7-10-7zm0 11.5A4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 0 1 0 9zm0-7a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"/></svg>
   View Details
 </div>
+
 <script>
-// Progress bar
+// Progress bar & Sticky Header toggle
+var stickyHeader = document.getElementById('sticky-header');
+
 window.addEventListener('scroll', function(){
   var h = document.documentElement;
   var scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
   document.getElementById('progress-bar').style.width = scrolled + '%';
+
+  if (window.scrollY > 180) {
+    stickyHeader.classList.add('visible');
+  } else {
+    stickyHeader.classList.remove('visible');
+  }
 });
 
 // Scroll reveal
