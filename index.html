@@ -46,11 +46,6 @@
     color:var(--ledger);
     font-weight:500;
   }
-  .logo{
-    display:block;
-    margin-bottom:1rem;
-    border-radius:10px;
-  }
   h1{
     font-family:'Newsreader',serif;
     font-weight:500;
@@ -83,16 +78,21 @@
   .location b{color:var(--ink);font-weight:500;}
   .links{
     margin-top:1.4rem;
-    font-size:.92rem;
+    display:flex;
+    gap:1.1rem;
   }
   .links a{
-    color:var(--ledger);
-    text-decoration:none;
-    border-bottom:1px solid var(--line);
-    padding-bottom:1px;
+    color:var(--muted);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:34px;
+    height:34px;
+    border:1px solid var(--line);
+    border-radius:50%;
+    transition:color .15s ease,border-color .15s ease;
   }
-  .links a:hover{border-color:var(--ledger);}
-  .links .sep{color:var(--line);margin:0 .7rem;}
+  .links a:hover{color:var(--ledger);border-color:var(--ledger);}
 
   .rule{
     border:0;
@@ -120,7 +120,9 @@
     font-size:1.2rem;
     margin:0 0 .5rem;
   }
-  .project h3 a{color:var(--ink);text-decoration:none;}
+  .project h3 a{color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;}
+  .project h3 a:hover .gh-mark{color:var(--ledger);}
+  .gh-mark{color:var(--muted);vertical-align:middle;}
   .project h3 a:hover{color:var(--ledger);}
   .tag{
     font-family:'IBM Plex Mono',monospace;
@@ -217,17 +219,20 @@
 <body>
 <div class="wrap">
 
- 
   <h1>Thanh Vinh Dang</h1>
   <div class="role">Accounting &amp; Audit background, transitioning into Data-driven Finance (FP&amp;A / Financial Analytics)</div>
   <p class="intro">I combine a foundation in accounting and audit with data analytics skills (SQL, Python, Power BI) to build end-to-end financial analysis workflows — from raw data to business recommendations.</p>
 
   <div class="links">
-    <a href="https://www.linkedin.com/in/thanhvinhdang2001/" target="_blank">LinkedIn</a>
-    <span class="sep">/</span>
-    <a href="mailto:thanhvinhdang.work@gmail.com">Email</a>
-    <span class="sep">/</span>
-    <a href="https://github.com/vinhdang111" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/thanhvinhdang2001/" target="_blank" aria-label="LinkedIn">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.68H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+    </a>
+    <a href="mailto:thanhvinhdang.work@gmail.com" aria-label="Email">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M22 5.5v13a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 18.5v-13A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5zm-2.2.3L12 11.1 4.2 5.8l-.7 1.1L12 12.7l8.5-5.8-.7-1.1z"/></svg>
+    </a>
+    <a href="https://github.com/vinhdang111" target="_blank" aria-label="GitHub">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.38-2.03 1.02-2.75-.1-.26-.44-1.31.1-2.73 0 0 .83-.27 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.32 2.75-1.05 2.75-1.05.54 1.42.2 2.47.1 2.73.64.72 1.02 1.63 1.02 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+    </a>
   </div>
 
   <hr class="rule">
@@ -235,7 +240,7 @@
   <h2>Projects</h2>
 
   <div class="project">
-    <h3><a href="https://github.com/vinhdang111/french-equities-financial-analysis" target="_blank">French Equities Financial Analysis</a><span class="tag">Live</span></h3>
+    <h3><a href="https://github.com/vinhdang111/french-equities-financial-analysis" target="_blank">French Equities Financial Analysis <svg class="gh-mark" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.38-2.03 1.02-2.75-.1-.26-.44-1.31.1-2.73 0 0 .83-.27 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.32 2.75-1.05 2.75-1.05.54 1.42.2 2.47.1 2.73.64.72 1.02 1.63 1.02 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg></a><span class="tag">Live</span></h3>
     <p>End-to-end financial analytics covering ~50 major French-listed companies (CAC 40 / SBF 120). SQL for structured storage, Python for cleaning and revenue-growth forecasting, Power BI for an interactive dashboard.</p>
     <div class="stack"><b>Stack —</b> Python, SQL, Jupyter Notebook, Power BI</div>
     <div class="highlights"><b>Highlights —</b> Pooled/panel regression forecasting model · sector-level profitability &amp; leverage analysis · free cash flow margin identified as a stronger growth signal than traditional profitability ratios (ROE)</div>
