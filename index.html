@@ -81,8 +81,8 @@
     transform:scale(1.08);
   }
   .sticky-links .link-linkedin:hover{color:#0A66C2;border-color:#0A66C2;}
-  .sticky-links .link-email:hover{color:#EA4335;border-color:#EA4335;}
   .sticky-links .link-github:hover{color:#181717;border-color:#181717;}
+  .sticky-links .link-email:hover{color:#EA4335;border-color:#EA4335;}
 
   /* Minimal Tooltip Styles */
   [data-tooltip] {
@@ -195,20 +195,6 @@
     margin:0 auto;
     padding:5rem 1.5rem 6rem;
   }
-  .figures{
-    display:flex;
-    gap:2rem;
-    flex-wrap:wrap;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:.78rem;
-    color:var(--muted);
-    letter-spacing:.02em;
-    margin-bottom:2.5rem;
-  }
-  .figures span b{
-    color:var(--ledger);
-    font-weight:500;
-  }
   h1{
     font-family:'Newsreader',serif;
     font-weight:500;
@@ -233,12 +219,6 @@
     color:var(--ink);
     font-size:1rem;
   }
-  .location{
-    margin-top:1.2rem;
-    font-size:.92rem;
-    color:var(--muted);
-  }
-  .location b{color:var(--ink);font-weight:500;}
   .links{
     margin-top:1.4rem;
     display:flex;
@@ -253,11 +233,11 @@
     height:34px;
     border:1px solid var(--line);
     border-radius:50%;
-    transition:color .15s ease,border-color .15s ease;
+    transition:color .15s ease,border-color .15s ease, background .15s ease;
   }
-  .link-linkedin:hover{color:#0A66C2;border-color:#0A66C2;}
+  .link-linkedin:hover{color:#0A66C2;border-color:#0A66C2;background:#fff;}
+  .link-github:hover{color:#181717;border-color:#181717;background:#fff;}
   .link-email:hover{color:#EA4335;border-color:#EA4335;background:#fff;}
-  .link-github:hover{color:#181717;border-color:#181717;}
 
   .rule{
     border:0;
@@ -448,14 +428,17 @@
   <div class="sticky-inner">
     <a href="#" class="sticky-name">Thanh Vinh Dang</a>
     <div class="sticky-links">
+      <!-- 1. LinkedIn -->
       <a class="link-linkedin tooltip-bottom" data-tooltip="LinkedIn" href="https://www.linkedin.com/in/thanhvinhdang2001/" target="_blank" aria-label="LinkedIn">
         <svg width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.68H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
       </a>
-      <a class="link-email tooltip-bottom" data-tooltip="Copy Email" href="mailto:thanhvinhdang.work@gmail.com" aria-label="Email">
-        <svg width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M22 5.5v13a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 18.5v-13A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5zm-2.2.3L12 11.1 4.2 5.8l-.7 1.1L12 12.7l8.5-5.8-.7-1.1z"/></svg>
-      </a>
+      <!-- 2. GitHub -->
       <a class="link-github tooltip-bottom" data-tooltip="GitHub" href="https://github.com/vinhdang111" target="_blank" aria-label="GitHub">
         <svg width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.38-2.03 1.02-2.75-.1-.26-.44-1.31.1-2.73 0 0 .83-.27 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.32 2.75-1.05 2.75-1.05.54 1.42.2 2.47.1 2.73.64.72 1.02 1.63 1.02 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+      </a>
+      <!-- 3. Email -->
+      <a class="link-email tooltip-bottom" data-tooltip="Copy Email" href="mailto:thanhvinhdang.work@gmail.com" aria-label="Email">
+        <svg width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M22 5.5v13a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 18.5v-13A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5zm-2.2.3L12 11.1 4.2 5.8l-.7 1.1L12 12.7l8.5-5.8-.7-1.1z"/></svg>
       </a>
     </div>
   </div>
@@ -468,14 +451,17 @@
   <p class="intro">I combine a foundation in accounting and audit with data analytics skills (SQL, Python, Power BI) to build end-to-end financial analysis workflows — from raw data to business recommendations.</p>
 
   <div class="links">
+    <!-- 1. LinkedIn -->
     <a class="link-linkedin tooltip-top" data-tooltip="LinkedIn" href="https://www.linkedin.com/in/thanhvinhdang2001/" target="_blank" aria-label="LinkedIn">
       <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.68H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
     </a>
-    <a class="link-email tooltip-top" data-tooltip="Copy Email" href="mailto:thanhvinhdang.work@gmail.com" aria-label="Email">
-      <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M22 5.5v13a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 18.5v-13A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5zm-2.2.3L12 11.1 4.2 5.8l-.7 1.1L12 12.7l8.5-5.8-.7-1.1z"/></svg>
-    </a>
+    <!-- 2. GitHub -->
     <a class="link-github tooltip-top" data-tooltip="GitHub" href="https://github.com/vinhdang111" target="_blank" aria-label="GitHub">
       <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.38-2.03 1.02-2.75-.1-.26-.44-1.31.1-2.73 0 0 .83-.27 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.32 2.75-1.05 2.75-1.05.54 1.42.2 2.47.1 2.73.64.72 1.02 1.63 1.02 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+    </a>
+    <!-- 3. Email -->
+    <a class="link-email tooltip-top" data-tooltip="Copy Email" href="mailto:thanhvinhdang.work@gmail.com" aria-label="Email">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M22 5.5v13a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 18.5v-13A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5zm-2.2.3L12 11.1 4.2 5.8l-.7 1.1L12 12.7l8.5-5.8-.7-1.1z"/></svg>
     </a>
   </div>
 
@@ -555,7 +541,6 @@
 </div>
 
 <script>
-// Progress bar & Sticky Header toggle
 var stickyHeader = document.getElementById('sticky-header');
 
 window.addEventListener('scroll', function(){
@@ -570,16 +555,44 @@ window.addEventListener('scroll', function(){
   }
 });
 
-// Auto-Copy Email to Clipboard with Toast Feedback
+var targetEmail = 'thanhvinhdang.work@gmail.com';
+
 document.querySelectorAll('.link-email').forEach(function(btn){
   btn.addEventListener('click', function(e){
     e.preventDefault();
-    var email = 'thanhvinhdang.work@gmail.com';
-    navigator.clipboard.writeText(email).then(function(){
-      showToast(btn, 'Copied!');
-    });
+    copyTextToClipboard(targetEmail, btn);
   });
 });
+
+function copyTextToClipboard(text, targetEl) {
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(function(){
+      showToast(targetEl, 'Copied!');
+    }).catch(function(){
+      fallbackCopyText(text, targetEl);
+    });
+  } else {
+    fallbackCopyText(text, targetEl);
+  }
+}
+
+function fallbackCopyText(text, targetEl) {
+  var textArea = document.createElement("textarea");
+  textArea.value = text;
+  textArea.style.position = "fixed";
+  textArea.style.top = "-9999px";
+  textArea.style.left = "-9999px";
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  try {
+    document.execCommand('copy');
+    showToast(targetEl, 'Copied!');
+  } catch (err) {
+    console.error('Could not copy email', err);
+  }
+  document.body.removeChild(textArea);
+}
 
 function showToast(targetEl, text) {
   var oldToast = document.querySelector('.copy-toast');
@@ -609,7 +622,6 @@ function showToast(targetEl, text) {
   }, 1500);
 }
 
-// Scroll reveal
 var revealEls = document.querySelectorAll('.reveal');
 var observer = new IntersectionObserver(function(entries){
   entries.forEach(function(entry){
