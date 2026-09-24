@@ -84,6 +84,66 @@
   .sticky-links .link-email:hover{color:#EA4335;border-color:#EA4335;}
   .sticky-links .link-github:hover{color:#181717;border-color:#181717;}
 
+  /* Minimal Tooltip Styles */
+  [data-tooltip] {
+    position: relative;
+  }
+  [data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: var(--ledger);
+    color: var(--paper);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: .68rem;
+    padding: .2rem .5rem;
+    border-radius: 3px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(31, 75, 68, 0.15);
+  }
+  /* Tooltip position TOP (for Hero Links) */
+  .tooltip-top::after {
+    bottom: calc(100% + 8px);
+  }
+  .tooltip-top:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  /* Tooltip position BOTTOM (for Sticky Header Links) */
+  .tooltip-bottom::after {
+    top: calc(100% + 8px);
+  }
+  .tooltip-bottom:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Floating Copy Toast */
+  .copy-toast{
+    position:absolute;
+    transform:translateX(-50%) translateY(4px);
+    background:var(--ledger);
+    color:var(--paper);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.72rem;
+    padding:.25rem .55rem;
+    border-radius:3px;
+    pointer-events:none;
+    opacity:0;
+    transition:opacity .2s ease, transform .2s ease;
+    z-index:1005;
+    box-shadow:0 4px 12px rgba(31, 75, 68, 0.15);
+  }
+  .copy-toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+  }
+
   .reveal{
     opacity:0;
     transform:translateY(14px);
@@ -388,13 +448,13 @@
   <div class="sticky-inner">
     <a href="#" class="sticky-name">Thanh Vinh Dang</a>
     <div class="sticky-links">
-      <a class="link-linkedin" href="https://www.linkedin.com/in/thanhvinhdang2001/" target="_blank" aria-label="LinkedIn">
+      <a class="link-linkedin tooltip-bottom" data-tooltip="LinkedIn" href="https://www.linkedin.com/in/thanhvinhdang2001/" target="_blank" aria-label="LinkedIn">
         <svg width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.68H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
       </a>
-      <a class="link-email" href="mailto:thanhvinhdang.work@gmail.com" aria-label="Email">
+      <a class="link-email tooltip-bottom" data-tooltip="Copy Email" href="mailto:thanhvinhdang.work@gmail.com" aria-label="Email">
         <svg width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M22 5.5v13a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 18.5v-13A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5zm-2.2.3L12 11.1 4.2 5.8l-.7 1.1L12 12.7l8.5-5.8-.7-1.1z"/></svg>
       </a>
-      <a class="link-github" href="https://github.com/vinhdang111" target="_blank" aria-label="GitHub">
+      <a class="link-github tooltip-bottom" data-tooltip="GitHub" href="https://github.com/vinhdang111" target="_blank" aria-label="GitHub">
         <svg width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.38-2.03 1.02-2.75-.1-.26-.44-1.31.1-2.73 0 0 .83-.27 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.32 2.75-1.05 2.75-1.05.54 1.42.2 2.47.1 2.73.64.72 1.02 1.63 1.02 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
       </a>
     </div>
@@ -408,13 +468,13 @@
   <p class="intro">I combine a foundation in accounting and audit with data analytics skills (SQL, Python, Power BI) to build end-to-end financial analysis workflows — from raw data to business recommendations.</p>
 
   <div class="links">
-    <a class="link-linkedin" href="https://www.linkedin.com/in/thanhvinhdang2001/" target="_blank" aria-label="LinkedIn">
+    <a class="link-linkedin tooltip-top" data-tooltip="LinkedIn" href="https://www.linkedin.com/in/thanhvinhdang2001/" target="_blank" aria-label="LinkedIn">
       <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.68H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
     </a>
-    <a class="link-email" href="mailto:thanhvinhdang.work@gmail.com" aria-label="Email">
+    <a class="link-email tooltip-top" data-tooltip="Copy Email" href="mailto:thanhvinhdang.work@gmail.com" aria-label="Email">
       <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M22 5.5v13a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 18.5v-13A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5zm-2.2.3L12 11.1 4.2 5.8l-.7 1.1L12 12.7l8.5-5.8-.7-1.1z"/></svg>
     </a>
-    <a class="link-github" href="https://github.com/vinhdang111" target="_blank" aria-label="GitHub">
+    <a class="link-github tooltip-top" data-tooltip="GitHub" href="https://github.com/vinhdang111" target="_blank" aria-label="GitHub">
       <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.38-2.03 1.02-2.75-.1-.26-.44-1.31.1-2.73 0 0 .83-.27 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.32 2.75-1.05 2.75-1.05.54 1.42.2 2.47.1 2.73.64.72 1.02 1.63 1.02 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
     </a>
   </div>
@@ -437,7 +497,7 @@
       <span class="dash-toggle-text">View live dashboard</span>
     </button>
     <div class="embed" id="dash-fr" hidden>
-      <iframe title="french_equities_dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiYjBmYTQzODQtODNjZC00YWVjLWFkN2YtM2IwY2YwMGZjMDVlIiwidCI6Ijk2OTJhM2QzLTJhMDgtNGVjOC1hMGJkLTFkYjM1NWViNDIzMCIsImMiOjh9&pageName=2e63ed60169b41785e60" frameborder="0" allowFullScreen="true"></iframe>
+      <iframe title="french_equities_dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiYjBmYTQzODQtODNjZC00YWVjLWFkN2YtM2IwY2YwMGZjMDVlIiwidCI6Ijk2OTJhM3QzLTJhMDgtNGVjOC1hMGJkLTFkYjM1NWViNDIzMCIsImMiOjh9&pageName=2e63ed60169b41785e60" frameborder="0" allowFullScreen="true"></iframe>
     </div>
   </div>
 
@@ -509,6 +569,45 @@ window.addEventListener('scroll', function(){
     stickyHeader.classList.remove('visible');
   }
 });
+
+// Auto-Copy Email to Clipboard with Toast Feedback
+document.querySelectorAll('.link-email').forEach(function(btn){
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    var email = 'thanhvinhdang.work@gmail.com';
+    navigator.clipboard.writeText(email).then(function(){
+      showToast(btn, 'Copied!');
+    });
+  });
+});
+
+function showToast(targetEl, text) {
+  var oldToast = document.querySelector('.copy-toast');
+  if (oldToast) oldToast.remove();
+
+  var toast = document.createElement('div');
+  toast.className = 'copy-toast';
+  toast.textContent = text;
+  document.body.appendChild(toast);
+
+  var rect = targetEl.getBoundingClientRect();
+  toast.style.left = (rect.left + rect.width / 2) + 'px';
+  
+  if(targetEl.classList.contains('tooltip-bottom')) {
+    toast.style.top = (rect.top + window.scrollY + rect.height + 8) + 'px';
+  } else {
+    toast.style.top = (rect.top + window.scrollY - 32) + 'px';
+  }
+
+  requestAnimationFrame(function(){
+    toast.classList.add('show');
+  });
+
+  setTimeout(function(){
+    toast.classList.remove('show');
+    setTimeout(function(){ toast.remove(); }, 200);
+  }, 1500);
+}
 
 // Scroll reveal
 var revealEls = document.querySelectorAll('.reveal');
