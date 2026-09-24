@@ -155,14 +155,34 @@
     margin:0 0 1.8rem;
   }
 
+  /* Glass Card Elevation on Hover */
   .project{
-    padding:1.6rem 0 1.6rem 1.2rem;
-    border-left:2px solid var(--line);
-    margin-bottom:.4rem;
-    transition:border-color .2s ease;
+    padding:1.6rem 1.2rem 1.6rem 1.4rem;
+    border-left:3px solid var(--line);
+    border-radius:0 8px 8px 0;
+    background:transparent;
+    margin-bottom:1.2rem;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease, backdrop-filter .25s ease;
   }
-  .project:hover{border-left-color:var(--gold);}
-  .project.soon{opacity:.55;}
+  .project:hover{
+    border-left-color:var(--gold);
+    transform:translateY(-3px);
+    /* Nền kính mỏng nhẹ giữ nguyên sắc vàng giấy đằng sau */
+    background:rgba(255, 255, 255, 0.25);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    /* Bóng đổ dịu cùng viền phản quang cạnh trên của mặt kính */
+    box-shadow:0 12px 24px -6px rgba(31, 75, 68, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+  .project.soon{opacity:.65;}
+  .project.soon:hover{
+    transform:none;
+    box-shadow:none;
+    background:transparent;
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+    border-left-color:var(--line);
+  }
   .project h3{
     font-family:'Newsreader',serif;
     font-weight:500;
@@ -230,6 +250,7 @@
     border:1px solid var(--line);
     background:#fff;
     overflow:hidden;
+    border-radius:4px;
   }
   .embed iframe{
     position:absolute;
@@ -247,6 +268,7 @@
     border:1px solid var(--ledger);
     padding:.5rem 1rem;
     cursor:pointer;
+    border-radius:4px;
     transition:background .15s ease,color .15s ease;
     display:inline-flex;
     align-items:center;
