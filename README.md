@@ -4,4 +4,4 @@
 
 ---
 
-Personal portfolio showcasing applied Financial Analytics and FP&A projects — transforming raw corporate disclosures into actionable business models and dynamic dashboards using **SQL, Python, and Power BI**.
+Personal portfolio showcasing applied Financial Analytics and FP&A projects — transforming raw corporate disclosures into actionable business models and dynamic dashboards.
