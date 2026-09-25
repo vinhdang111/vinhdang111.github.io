@@ -78,8 +78,8 @@
     transition:color .15s ease, border-color .15s ease, transform .2s cubic-bezier(0.25, 1, 0.5, 1);
   }
   .sticky-links .link-linkedin:hover{color:#0A66C2;border-color:#0A66C2;}
-  .sticky-links .link-email:hover{color:#EA4335;border-color:#EA4335;}
   .sticky-links .link-github:hover{color:#181717;border-color:#181717;}
+  .sticky-links .link-email:hover{color:#EA4335;border-color:#EA4335;}
 
   /* Minimal Tooltip Styles */
   [data-tooltip] {
@@ -251,8 +251,8 @@
     transition:color .15s ease, border-color .15s ease, transform .2s cubic-bezier(0.25, 1, 0.5, 1);
   }
   .link-linkedin:hover{color:#0A66C2;border-color:#0A66C2;}
-  .link-email:hover{color:#EA4335;border-color:#EA4335;background:#fff;}
   .link-github:hover{color:#181717;border-color:#181717;}
+  .link-email:hover{color:#EA4335;border-color:#EA4335;background:#fff;}
 
   .rule{
     border:0;
@@ -273,6 +273,7 @@
     border-radius:0 8px 8px 0;
     background:transparent;
     margin-bottom:1.2rem;
+    cursor:pointer;
     transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease, background .3s ease, opacity .3s ease, filter .3s ease;
   }
   .project:hover{
@@ -293,7 +294,7 @@
     border-left-color:var(--line);
   }
 
-  /* Trạng thái khi Skill được chọn */
+  /* Selected / Filtered state for Skill & Project */
   .project.dimmed{
     opacity:.28 !important;
     filter:grayscale(60%);
@@ -470,11 +471,11 @@
       <a class="link-linkedin tooltip-bottom magnetic" data-tooltip="LinkedIn" href="https://www.linkedin.com/in/thanhvinhdang2001/" target="_blank" aria-label="LinkedIn">
         <svg width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.68H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
       </a>
-      <a class="link-email tooltip-bottom magnetic" data-tooltip="Copy Email" href="mailto:thanhvinhdang.work@gmail.com" aria-label="Email">
-        <svg width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M22 5.5v13a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 18.5v-13A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5zm-2.2.3L12 11.1 4.2 5.8l-.7 1.1L12 12.7l8.5-5.8-.7-1.1z"/></svg>
-      </a>
       <a class="link-github tooltip-bottom magnetic" data-tooltip="GitHub" href="https://github.com/vinhdang111" target="_blank" aria-label="GitHub">
         <svg width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.38-2.03 1.02-2.75-.1-.26-.44-1.31.1-2.73 0 0 .83-.27 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.32 2.75-1.05 2.75-1.05.54 1.42.2 2.47.1 2.73.64.72 1.02 1.63 1.02 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+      </a>
+      <a class="link-email tooltip-bottom magnetic" data-tooltip="Copy Email" href="mailto:thanhvinhdang.work@gmail.com" aria-label="Email">
+        <svg width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M22 5.5v13a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 18.5v-13A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5zm-2.2.3L12 11.1 4.2 5.8l-.7 1.1L12 12.7l8.5-5.8-.7-1.1z"/></svg>
       </a>
     </div>
   </div>
@@ -490,11 +491,11 @@
     <a class="link-linkedin tooltip-top magnetic" data-tooltip="LinkedIn" href="https://www.linkedin.com/in/thanhvinhdang2001/" target="_blank" aria-label="LinkedIn">
       <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.68H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
     </a>
-    <a class="link-email tooltip-top magnetic" data-tooltip="Copy Email" href="mailto:thanhvinhdang.work@gmail.com" aria-label="Email">
-      <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M22 5.5v13a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 18.5v-13A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5zm-2.2.3L12 11.1 4.2 5.8l-.7 1.1L12 12.7l8.5-5.8-.7-1.1z"/></svg>
-    </a>
     <a class="link-github tooltip-top magnetic" data-tooltip="GitHub" href="https://github.com/vinhdang111" target="_blank" aria-label="GitHub">
       <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.38-2.03 1.02-2.75-.1-.26-.44-1.31.1-2.73 0 0 .83-.27 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.32 2.75-1.05 2.75-1.05.54 1.42.2 2.47.1 2.73.64.72 1.02 1.63 1.02 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+    </a>
+    <a class="link-email tooltip-top magnetic" data-tooltip="Copy Email" href="mailto:thanhvinhdang.work@gmail.com" aria-label="Email">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M22 5.5v13a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 18.5v-13A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5zm-2.2.3L12 11.1 4.2 5.8l-.7 1.1L12 12.7l8.5-5.8-.7-1.1z"/></svg>
     </a>
   </div>
 
@@ -563,7 +564,6 @@
 
   <footer class="reveal">
     <span>Thanh Vinh Dang</span>
-    <span>Updated 2026</span>
   </footer>
 
 </div>
@@ -680,24 +680,31 @@ function toggleDash(id, btn){
   }
 }
 
-// Interactive Skill Highlight & Filter Feature
+// Interactive Bidirectional Filter (Skill <-> Project)
 var skillPills = document.querySelectorAll('.skill-pill');
 var projects = document.querySelectorAll('.project');
 var activeSkill = null;
+var activeProject = null;
 
+// Function to clear all active highlight and dim states
+function clearAllSelections() {
+  activeSkill = null;
+  activeProject = null;
+  skillPills.forEach(function(p){ p.classList.remove('active'); });
+  projects.forEach(function(proj){ proj.classList.remove('highlighted', 'dimmed'); });
+}
+
+// 1. Skill Pill click handler
 skillPills.forEach(function(pill){
-  pill.addEventListener('click', function(){
+  pill.addEventListener('click', function(e){
+    e.stopPropagation(); // Prevent triggering document click event
     var skill = this.getAttribute('data-skill');
 
     if (activeSkill === skill) {
-      // Bấm lại skill đang chọn -> Hủy lọc
-      activeSkill = null;
-      skillPills.forEach(function(p){ p.classList.remove('active'); });
-      projects.forEach(function(proj){ proj.classList.remove('highlighted', 'dimmed'); });
+      clearAllSelections();
     } else {
-      // Chọn skill mới
+      clearAllSelections();
       activeSkill = skill;
-      skillPills.forEach(function(p){ p.classList.remove('active'); });
       this.classList.add('active');
 
       projects.forEach(function(proj){
@@ -705,20 +712,59 @@ skillPills.forEach(function(pill){
         var skillsList = skillsAttr.split(' ');
         if (skillsList.includes(skill)) {
           proj.classList.add('highlighted');
-          proj.classList.remove('dimmed');
         } else {
-          proj.classList.remove('highlighted');
           proj.classList.add('dimmed');
         }
       });
 
-      // Cuộn nhẹ tới danh sách Projects nếu cần
       var projectsSection = document.getElementById('projects-section');
       if (projectsSection) {
         projectsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
     }
   });
+});
+
+// 2. Project Card direct click handler
+projects.forEach(function(proj){
+  proj.addEventListener('click', function(e){
+    // Ignore click if user clicked an interactive child element (links, buttons, iframe)
+    if (e.target.closest('a, button, iframe')) return;
+
+    e.stopPropagation(); // Prevent triggering document click event
+
+    if (activeProject === this) {
+      clearAllSelections();
+    } else {
+      clearAllSelections();
+      activeProject = this;
+      this.classList.add('highlighted');
+
+      // Dim unselected projects
+      projects.forEach(function(otherProj){
+        if (otherProj !== proj) {
+          otherProj.classList.add('dimmed');
+        }
+      });
+
+      // Highlight related skills
+      var skillsAttr = this.getAttribute('data-skills') || '';
+      var skillsList = skillsAttr.split(' ');
+      skillPills.forEach(function(pill){
+        var skill = pill.getAttribute('data-skill');
+        if (skillsList.includes(skill)) {
+          pill.classList.add('active');
+        }
+      });
+    }
+  });
+});
+
+// 3. Click outside to reset selection
+document.addEventListener('click', function(e){
+  if (!e.target.closest('.project') && !e.target.closest('.skill-pill')) {
+    clearAllSelections();
+  }
 });
 </script>
 </body>
