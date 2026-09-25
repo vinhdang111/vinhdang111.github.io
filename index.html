@@ -16,7 +16,26 @@
     --gold:#A9762F;
     --line:#D9D2BF;
     --muted:#6B675C;
+    --header-bg: rgba(246, 243, 236, 0.88);
+    --card-hover: rgba(255, 255, 255, 0.25);
+    --card-shadow: rgba(31, 75, 68, 0.08);
+    --grid-color: rgba(217, 210, 191, 0.25);
   }
+
+  /* VS Code Dark Theme Palette Override */
+  [data-theme="dark"] {
+    --paper:#1e1e1e;
+    --ink:#d4d4d4;
+    --ledger:#4ec9b0;
+    --gold:#ce9178;
+    --line:#333333;
+    --muted:#858585;
+    --header-bg: rgba(30, 30, 30, 0.88);
+    --card-hover: rgba(255, 255, 255, 0.04);
+    --card-shadow: rgba(0, 0, 0, 0.4);
+    --grid-color: rgba(255, 255, 255, 0.03);
+  }
+
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   #progress-bar{
@@ -35,16 +54,16 @@
     top:0; left:0;
     width:100%;
     z-index:990;
-    background:rgba(246, 243, 236, 0.88);
+    background:var(--header-bg);
     backdrop-filter:blur(10px);
     -webkit-backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
     transform:translateY(-100%);
-    transition:transform .3s ease, box-shadow .3s ease;
+    transition:transform .3s ease, box-shadow .3s ease, background .3s ease, border-color .3s ease;
   }
   #sticky-header.visible{
     transform:translateY(0);
-    box-shadow:0 4px 20px rgba(0,0,0,0.04);
+    box-shadow:0 4px 20px rgba(0,0,0,0.08);
   }
   .sticky-inner{
     max-width:720px;
@@ -79,7 +98,35 @@
   }
   .sticky-links .link-linkedin:hover{color:#fff;background:#0A66C2;border-color:#0A66C2;}
   .sticky-links .link-github:hover{color:#fff;background:#181717;border-color:#181717;}
-  .sticky-links .link-email:hover{background:#fff;border-color:#dadce0;}
+  [data-theme="dark"] .sticky-links .link-github:hover{background:#333;border-color:#555;}
+  .sticky-links .link-email:hover{background:var(--paper);border-color:var(--gold);}
+
+  /* Theme Toggle Button Style */
+  .theme-toggle-btn {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    color: var(--muted);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: color .15s ease, border-color .15s ease, background .15s ease, transform .2s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .theme-toggle-btn:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+  }
+
+  /* Sun/Moon Icon visibility */
+  .sun-icon { display: none; }
+  .moon-icon { display: block; }
+  [data-theme="dark"] .sun-icon { display: block; }
+  [data-theme="dark"] .moon-icon { display: none; }
 
   /* Minimal Tooltip Styles */
   [data-tooltip] {
@@ -101,7 +148,7 @@
     pointer-events: none;
     transition: opacity .18s ease, transform .18s ease;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(31, 75, 68, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
   .tooltip-top::after {
     bottom: calc(100% + 8px);
@@ -132,7 +179,7 @@
     opacity:0;
     transition:opacity .2s ease, transform .2s ease;
     z-index:1005;
-    box-shadow:0 4px 12px rgba(31, 75, 68, 0.15);
+    box-shadow:0 4px 12px rgba(0, 0, 0, 0.2);
   }
   .copy-toast.show{
     opacity:1;
@@ -177,18 +224,28 @@
     margin:0;
     background-color:var(--paper);
     background-image: 
-      linear-gradient(rgba(217, 210, 191, 0.25) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(217, 210, 191, 0.25) 1px, transparent 1px);
+      linear-gradient(var(--grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
     background-size: 32px 32px;
     color:var(--ink);
     font-family:'IBM Plex Sans',sans-serif;
     line-height:1.65;
     -webkit-font-smoothing:antialiased;
+    transition: background-color .3s ease, color .3s ease;
   }
   .wrap{
     max-width:720px;
     margin:0 auto;
-    padding:5rem 1.5rem 6rem;
+    padding:3.5rem 1.5rem 6rem;
+    position: relative;
+  }
+
+  /* Top Bar Layout */
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: .8rem;
   }
 
   /* Portfolio Badge Style */
@@ -205,7 +262,10 @@
     border: 1px solid rgba(31, 75, 68, 0.2);
     padding: .2rem .6rem;
     border-radius: 4px;
-    margin-bottom: .8rem;
+  }
+  [data-theme="dark"] .portfolio-badge {
+    background: rgba(78, 201, 176, 0.1);
+    border-color: rgba(78, 201, 176, 0.25);
   }
   .portfolio-badge::before {
     content: '';
@@ -266,6 +326,7 @@
   .links{
     margin-top:1.4rem;
     display:flex;
+    align-items:center;
     gap:1.1rem;
   }
   .links a{
@@ -281,7 +342,8 @@
   }
   .link-linkedin:hover{color:#fff;background:#0A66C2;border-color:#0A66C2;}
   .link-github:hover{color:#fff;background:#181717;border-color:#181717;}
-  .link-email:hover{background:#fff;border-color:#dadce0;}
+  [data-theme="dark"] .link-github:hover{background:#333;border-color:#555;}
+  .link-email:hover{background:var(--paper);border-color:var(--gold);}
 
   /* Email logo path hover transition */
   .link-email path {
@@ -317,10 +379,10 @@
   .project:hover{
     border-left-color:var(--gold);
     transform:translateY(-3px);
-    background:rgba(255, 255, 255, 0.25);
+    background:var(--card-hover);
     backdrop-filter:blur(6px);
     -webkit-backdrop-filter:blur(6px);
-    box-shadow:0 12px 24px -6px rgba(31, 75, 68, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    box-shadow:0 12px 24px -6px var(--card-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
   .project.soon{opacity:.65;}
   .project.soon:hover{
@@ -339,10 +401,10 @@
   }
   .project.highlighted{
     border-left-color:var(--gold) !important;
-    background:rgba(255, 255, 255, 0.45) !important;
+    background:var(--card-hover) !important;
     backdrop-filter:blur(6px);
     -webkit-backdrop-filter:blur(6px);
-    box-shadow:0 12px 28px -4px rgba(169, 118, 47, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+    box-shadow:0 12px 28px -4px rgba(206, 145, 120, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
     transform:translateY(-3px);
   }
 
@@ -353,7 +415,7 @@
     margin:0 0 .5rem;
   }
   .project h3 a{color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;}
-  .project h3 a:hover .gh-mark{color:#181717;}
+  .project h3 a:hover .gh-mark{color:var(--ink);}
   .gh-mark{color:var(--muted);vertical-align:middle;}
   .project h3 a:hover{color:var(--ledger);}
   
@@ -370,7 +432,7 @@
     gap:.35rem;
   }
   .tag.live{
-    color:#15803d;
+    color:#22c55e;
   }
   .tag.live::before{
     content:'';
@@ -410,7 +472,7 @@
     margin-top:1.1rem;
     padding-top:62.25%;
     border:1px solid var(--line);
-    background:#fff;
+    background:#181818;
     overflow:hidden;
     border-radius:4px;
   }
@@ -450,7 +512,7 @@
     border:1px solid var(--line);
     border-radius:6px;
     padding:1.5rem 1.6rem;
-    background:rgba(255, 255, 255, 0.35);
+    background:var(--card-hover);
   }
   .cs-section{margin-bottom:1.3rem;}
   .cs-section:last-child{margin-bottom:0;}
@@ -504,7 +566,7 @@
   }
   .cs-finding b{color:var(--ledger);font-weight:500;}
 
-  /* Count-up number effect — Key Findings only */
+  /* Count-up number effect */
   .cs-num{
     font-family:'IBM Plex Mono',monospace;
     color:var(--ledger);
@@ -517,7 +579,7 @@
   .case-study code{
     font-family:'IBM Plex Mono',monospace;
     font-size:.85em;
-    background:rgba(31, 75, 68, 0.07);
+    background:rgba(78, 201, 176, 0.12);
     padding:.1rem .3rem;
     border-radius:3px;
     color:var(--ledger);
@@ -554,20 +616,27 @@
     cursor:pointer;
     user-select:none;
   }
+  [data-theme="dark"] .skill-pill {
+    background: rgba(78, 201, 176, 0.1);
+    border-color: rgba(78, 201, 176, 0.25);
+  }
   .skill-pill:hover{
     background:rgba(31, 75, 68, 0.15);
     border-color:var(--ledger);
+  }
+  [data-theme="dark"] .skill-pill:hover {
+    background: rgba(78, 201, 176, 0.25);
   }
   .skill-pill.active{
     background:var(--ledger);
     color:var(--paper);
     border-color:var(--ledger);
-    box-shadow:0 2px 8px rgba(31, 75, 68, 0.25);
+    box-shadow:0 2px 8px rgba(0, 0, 0, 0.25);
   }
 
   @media (max-width:600px){
     .skillgrid{grid-template-columns:1fr;}
-    .wrap{padding-top:3.5rem;}
+    .wrap{padding-top:2.5rem;}
   }
 
   footer{
@@ -582,6 +651,17 @@
     gap:.5rem;
   }
 </style>
+<script>
+  // Apply saved theme immediately before body renders to avoid flicker
+  (function() {
+    var savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
 </head>
 <body>
 <div id="progress-bar"></div>
@@ -611,7 +691,15 @@
 
 <div class="wrap">
 
-  <div class="portfolio-badge">Financial Analytics Portfolio</div>
+  <!-- Top Bar: Badge nằm trái, Nút Theme Toggle nằm đúng vị trí góc trên bên phải khung nội dung -->
+  <div class="top-bar">
+    <div class="portfolio-badge">Financial Analytics Portfolio</div>
+    <button class="theme-toggle theme-toggle-btn tooltip-bottom magnetic" data-tooltip="Switch Theme" aria-label="Toggle Theme">
+      <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+
   <h1>Thanh Vinh Dang</h1>
   <div class="role">Accounting &amp; Audit background, transitioning into Data-driven Finance (FP&amp;A / Financial Analytics)</div>
   
@@ -762,6 +850,16 @@
 </div>
 
 <script>
+// Dark / Light Theme Toggle Logic
+document.querySelectorAll('.theme-toggle').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var currentTheme = document.documentElement.getAttribute('data-theme');
+    var targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', targetTheme);
+    localStorage.setItem('theme', targetTheme);
+  });
+});
+
 // Progress bar & Sticky Header toggle
 var stickyHeader = document.getElementById('sticky-header');
 
