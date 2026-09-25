@@ -103,7 +103,6 @@
     z-index: 1000;
     box-shadow: 0 4px 12px rgba(31, 75, 68, 0.15);
   }
-  /* Tooltip position TOP (for Hero Links) */
   .tooltip-top::after {
     bottom: calc(100% + 8px);
   }
@@ -111,7 +110,6 @@
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
-  /* Tooltip position BOTTOM (for Sticky Header Links) */
   .tooltip-bottom::after {
     top: calc(100% + 8px);
   }
@@ -268,14 +266,14 @@
     margin:0 0 1.8rem;
   }
 
-  /* Glass Card Elevation on Hover */
+  /* Glass Card Elevation on Hover & Highlighting */
   .project{
     padding:1.6rem 1.2rem 1.6rem 1.4rem;
     border-left:3px solid var(--line);
     border-radius:0 8px 8px 0;
     background:transparent;
     margin-bottom:1.2rem;
-    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease, backdrop-filter .25s ease;
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease, background .3s ease, opacity .3s ease, filter .3s ease;
   }
   .project:hover{
     border-left-color:var(--gold);
@@ -294,6 +292,21 @@
     -webkit-backdrop-filter:none;
     border-left-color:var(--line);
   }
+
+  /* Trạng thái khi Skill được chọn */
+  .project.dimmed{
+    opacity:.28 !important;
+    filter:grayscale(60%);
+  }
+  .project.highlighted{
+    border-left-color:var(--gold) !important;
+    background:rgba(255, 255, 255, 0.45) !important;
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    box-shadow:0 12px 28px -4px rgba(169, 118, 47, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+    transform:translateY(-3px);
+  }
+
   .project h3{
     font-family:'Newsreader',serif;
     font-weight:500;
@@ -413,10 +426,19 @@
     padding:.25rem .6rem;
     border-radius:4px;
     border:1px solid rgba(31, 75, 68, 0.18);
-    transition:background .2s ease;
+    transition:all .2s ease;
+    cursor:pointer;
+    user-select:none;
   }
   .skill-pill:hover{
     background:rgba(31, 75, 68, 0.15);
+    border-color:var(--ledger);
+  }
+  .skill-pill.active{
+    background:var(--ledger);
+    color:var(--paper);
+    border-color:var(--ledger);
+    box-shadow:0 2px 8px rgba(31, 75, 68, 0.25);
   }
 
   @media (max-width:600px){
@@ -478,9 +500,9 @@
 
   <hr class="rule">
 
-  <h2>Projects</h2>
+  <h2 id="projects-section">Projects</h2>
 
-  <div class="project reveal">
+  <div class="project reveal" data-skills="python sql jupyter-notebook power-bi financial-modeling ratio-analysis">
     <h3><a class="cursor-trigger" href="https://github.com/vinhdang111/french-equities-financial-analysis" target="_blank">French Equities Financial Analysis <svg class="gh-mark" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.38-2.03 1.02-2.75-.1-.26-.44-1.31.1-2.73 0 0 .83-.27 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.32 2.75-1.05 2.75-1.05.54 1.42.2 2.47.1 2.73.64.72 1.02 1.63 1.02 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg></a><span class="tag live">Live</span></h3>
     <p>End-to-end financial analytics covering ~50 major French-listed companies (CAC 40 / SBF 120). SQL for structured storage, Python for cleaning and revenue-growth forecasting, Power BI for an interactive dashboard.</p>
     <div class="stack"><b>Stack —</b> Python, SQL, Jupyter Notebook, Power BI</div>
@@ -498,18 +520,18 @@
     </div>
   </div>
 
-  <div class="project soon reveal">
+  <div class="project soon reveal" data-skills="excel power-bi budgeting variance-analysis financial-modeling">
     <h3>Nestlé FP&amp;A Case Study<span class="tag">In progress</span></h3>
     <p>Simulated end-to-end FP&amp;A workflow built on Nestlé's public financial disclosures — budget modeling, Actual vs. Budget variance analysis, and a business case for a strategic expansion decision.</p>
     <div class="stack"><b>Stack —</b> Excel, Power BI</div>
   </div>
 
-  <div class="project soon reveal">
+  <div class="project soon reveal" data-skills="">
     <h3>Project 3<span class="tag">Planned</span></h3>
     <p>Details coming soon.</p>
   </div>
 
-  <div class="project soon reveal">
+  <div class="project soon reveal" data-skills="">
     <h3>Project 4<span class="tag">Planned</span></h3>
     <p>Details coming soon.</p>
   </div>
@@ -521,20 +543,20 @@
     <div>
       <h4>Financial Analysis</h4>
       <div class="skill-pills">
-        <span class="skill-pill">Financial Modeling</span>
-        <span class="skill-pill">Budgeting</span>
-        <span class="skill-pill">Variance Analysis</span>
-        <span class="skill-pill">Ratio Analysis</span>
+        <span class="skill-pill" data-skill="financial-modeling">Financial Modeling</span>
+        <span class="skill-pill" data-skill="budgeting">Budgeting</span>
+        <span class="skill-pill" data-skill="variance-analysis">Variance Analysis</span>
+        <span class="skill-pill" data-skill="ratio-analysis">Ratio Analysis</span>
       </div>
     </div>
     <div>
       <h4>Data &amp; BI</h4>
       <div class="skill-pills">
-        <span class="skill-pill">SQL</span>
-        <span class="skill-pill">Python (pandas, scikit-learn)</span>
-        <span class="skill-pill">Jupyter Notebooks</span>
-        <span class="skill-pill">Power BI</span>
-        <span class="skill-pill">Excel</span>
+        <span class="skill-pill" data-skill="sql">SQL</span>
+        <span class="skill-pill" data-skill="python">Python (pandas, scikit-learn)</span>
+        <span class="skill-pill" data-skill="jupyter-notebook">Jupyter Notebook</span>
+        <span class="skill-pill" data-skill="power-bi">Power BI</span>
+        <span class="skill-pill" data-skill="excel">Excel</span>
       </div>
     </div>
   </div>
@@ -657,6 +679,47 @@ function toggleDash(id, btn){
     label.textContent = 'View live dashboard';
   }
 }
+
+// Interactive Skill Highlight & Filter Feature
+var skillPills = document.querySelectorAll('.skill-pill');
+var projects = document.querySelectorAll('.project');
+var activeSkill = null;
+
+skillPills.forEach(function(pill){
+  pill.addEventListener('click', function(){
+    var skill = this.getAttribute('data-skill');
+
+    if (activeSkill === skill) {
+      // Bấm lại skill đang chọn -> Hủy lọc
+      activeSkill = null;
+      skillPills.forEach(function(p){ p.classList.remove('active'); });
+      projects.forEach(function(proj){ proj.classList.remove('highlighted', 'dimmed'); });
+    } else {
+      // Chọn skill mới
+      activeSkill = skill;
+      skillPills.forEach(function(p){ p.classList.remove('active'); });
+      this.classList.add('active');
+
+      projects.forEach(function(proj){
+        var skillsAttr = proj.getAttribute('data-skills') || '';
+        var skillsList = skillsAttr.split(' ');
+        if (skillsList.includes(skill)) {
+          proj.classList.add('highlighted');
+          proj.classList.remove('dimmed');
+        } else {
+          proj.classList.remove('highlighted');
+          proj.classList.add('dimmed');
+        }
+      });
+
+      // Cuộn nhẹ tới danh sách Projects nếu cần
+      var projectsSection = document.getElementById('projects-section');
+      if (projectsSection) {
+        projectsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+  });
+});
 </script>
 </body>
 </html>
