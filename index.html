@@ -190,6 +190,31 @@
     margin:0 auto;
     padding:5rem 1.5rem 6rem;
   }
+
+  /* Portfolio Badge Style */
+  .portfolio-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--ledger);
+    background: rgba(31, 75, 68, 0.08);
+    border: 1px solid rgba(31, 75, 68, 0.2);
+    padding: .2rem .6rem;
+    border-radius: 4px;
+    margin-bottom: .8rem;
+  }
+  .portfolio-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: var(--gold);
+    border-radius: 50%;
+  }
+
   .figures{
     display:flex;
     gap:2rem;
@@ -539,7 +564,7 @@
     font-size:.82rem;
     color:var(--muted);
     display:flex;
-    justify-content:space-between;
+    justify-between:space-between;
     flex-wrap:wrap;
     gap:.5rem;
   }
@@ -568,9 +593,10 @@
 
 <div class="wrap">
 
+  <div class="portfolio-badge">Financial Analytics Portfolio</div>
   <h1>Thanh Vinh Dang</h1>
   <div class="role">Accounting &amp; Audit background, transitioning into Data-driven Finance (FP&amp;A / Financial Analytics)</div>
-  <p class="intro">I combine a foundation in accounting and audit with data analytics skills (SQL, Python, Power BI) to build end-to-end financial analysis workflows — from raw data to business recommendations.</p>
+  <p class="intro">A collection of applied financial analytics projects transforming raw corporate disclosures into actionable business models and dynamic dashboards using SQL, Python, and Power BI.</p>
 
   <div class="links">
     <a class="link-linkedin tooltip-top magnetic" data-tooltip="LinkedIn" href="https://www.linkedin.com/in/thanhvinhdang2001/" target="_blank" aria-label="LinkedIn">
@@ -589,7 +615,7 @@
   <h2 id="projects-section">Projects</h2>
 
   <div class="project reveal" data-skills="python sql jupyter-notebook power-bi financial-modeling ratio-analysis">
-    <h3><a class="cursor-trigger" href="https://github.com/vinhdang111/french-equities-financial-analysis" target="_blank">French Equities Financial Analysis <svg class="gh-mark" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.38-2.03 1.02-2.75-.1-.26-.44-1.31.1-2.73 0 0 .83-.27 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.32 2.75-1.05 2.75-1.05.54 1.42.2 2.47.1 2.73.64.72 1.02 1.63 1.02 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg></a><span class="tag live">Live</span></h3>
+    <h3><a class="cursor-trigger" data-cursor="View Code Details" href="https://github.com/vinhdang111/french-equities-financial-analysis" target="_blank">French Equities Financial Analysis <svg class="gh-mark" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.38-2.03 1.02-2.75-.1-.26-.44-1.31.1-2.73 0 0 .83-.27 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.32 2.75-1.05 2.75-1.05.54 1.42.2 2.47.1 2.73.64.72 1.02 1.63 1.02 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg></a><span class="tag live">Live</span></h3>
     <p>End-to-end financial analytics covering ~50 major French-listed companies (CAC 40 / SBF 120). SQL for structured storage, Python for cleaning and revenue-growth forecasting, Power BI for an interactive dashboard.</p>
     <div class="stack"><b>Stack —</b> Python, SQL, Jupyter Notebook, Power BI</div>
     <div class="highlights"><b>Highlights —</b> Pooled/panel regression forecasting model · sector-level profitability &amp; leverage analysis · free cash flow margin identified as a stronger growth signal than traditional profitability ratios (ROE)</div>
@@ -706,7 +732,7 @@
 
 <div id="cursor-arrow">
   <svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 5c-5.5 0-9.5 4.5-10 7 .5 2.5 4.5 7 10 7s9.5-4.5 10-7c-.5-2.5-4.5-7-10-7zm0 11.5A4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 0 1 0 9zm0-7a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"/></svg>
-  View Details
+  <span id="cursor-text">View Details</span>
 </div>
 
 <script>
@@ -791,11 +817,15 @@ revealEls.forEach(function(el){observer.observe(el);});
 
 // Custom cursor on project title links
 var cursorEl = document.getElementById('cursor-arrow');
+var cursorTextEl = document.getElementById('cursor-text');
+
 document.querySelectorAll('.cursor-trigger').forEach(function(link){
   link.addEventListener('mousemove', function(e){
     cursorEl.style.transform = 'translate(' + (e.clientX + 14) + 'px,' + (e.clientY + 14) + 'px)';
   });
   link.addEventListener('mouseenter', function(){
+    var customText = this.getAttribute('data-cursor') || 'View Details';
+    if (cursorTextEl) cursorTextEl.textContent = customText;
     cursorEl.classList.add('show');
   });
   link.addEventListener('mouseleave', function(){
