@@ -797,10 +797,25 @@
     </div>
   </div>
 
-  <div class="project soon reveal" data-skills="excel power-bi budgeting variance-analysis financial-modeling">
-    <h3>Nestlé FP&amp;A Case Study<span class="tag">In progress</span></h3>
-    <p>Simulated end-to-end FP&amp;A workflow built on Nestlé's public financial disclosures — budget modeling, Actual vs. Budget variance analysis, and a business case for a strategic expansion decision.</p>
-    <div class="stack"><b>Stack —</b> Excel, Power BI</div>
+  <div class="project reveal" data-skills="excel power-bi budgeting variance-analysis financial-modeling">
+    <h3><a class="cursor-trigger" data-cursor="View Code Details" href="https://github.com/vinhdang111/nestle-fpa-analysis" target="_blank">Nestlé FP&amp;A Case Study <svg class="gh-mark" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.38-2.03 1.02-2.75-.1-.26-.44-1.31.1-2.73 0 0 .83-.27 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.32 2.75-1.05 2.75-1.05.54 1.42.2 2.47.1 2.73.64.72 1.02 1.63 1.02 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg></a><span class="tag live">Live</span></h3>
+    <p>End-to-end FP&amp;A workflow on Nestlé's real public financials: a driver-based FY2025 budget under Adverse / Base / Favorable scenarios, built only from information available before the year, then tested against Nestlé's actual FY2025 results with a full variance analysis and driver backtest. Business case in progress.</p>
+    <div class="stack"><b>Stack —</b> Excel, Power BI (DAX)</div>
+    <div class="highlights"><b>Highlights —</b> Organic growth beat the budget (3.5% vs 3.0%), but a −5.7% FX headwind against a flat assumption turned planned +3.0% sales growth into a −2.0% decline · net profit landed 14.8% below the Base budget · backtest found 6 of 10 budget drivers outside their tested range</div>
+    <div class="project-actions">
+      <button class="dash-toggle magnetic" data-label-open="Hide dashboard" data-label-closed="View live dashboard" onclick="toggleDash('dash-nestle', this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="10" width="4" height="11" rx="1" fill="#F2C811"/>
+          <rect x="10" y="6" width="4" height="15" rx="1" fill="#F2C811"/>
+          <rect x="17" y="2" width="4" height="19" rx="1" fill="#F2C811"/>
+        </svg>
+        <span class="dash-toggle-text">View live dashboard</span>
+      </button>
+    </div>
+
+    <div class="embed" id="dash-nestle" hidden>
+      <iframe title="Nestle_FPA_Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiMGQwODRlMjEtNDY5Zi00M2MxLTgyYWUtZDEwZWM5OGY1ZmI1IiwidCI6Ijk2OTJhM2QzLTJhMDgtNGVjOC1hMGJkLTFkYjM1NWViNDIzMCIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>
+    </div>
   </div>
 
   <div class="project soon reveal" data-skills="">
