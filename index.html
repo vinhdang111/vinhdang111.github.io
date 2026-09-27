@@ -476,6 +476,17 @@
     overflow:hidden;
     border-radius:4px;
   }
+  .embed.embed-xl{padding-top:85%;background:#FFFFFF;}
+  .embed-link{
+    display:inline-block;
+    margin-top:.55rem;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.75rem;
+    color:var(--muted);
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+  .embed-link:hover{color:var(--ink);}
   .embed iframe{
     position:absolute;
     top:0; left:0;
@@ -488,7 +499,7 @@
     flex-wrap:wrap;
     margin-top:1.1rem;
   }
-  .dash-toggle, .cs-toggle{
+  .dash-toggle, .cs-toggle, .xl-toggle{
     font-family:'IBM Plex Mono',monospace;
     font-size:.78rem;
     letter-spacing:.02em;
@@ -496,15 +507,35 @@
     padding:.5rem 1rem;
     cursor:pointer;
     border-radius:4px;
-    transition:background .15s ease, color .15s ease, transform .2s cubic-bezier(0.25, 1, 0.5, 1);
+    transition:background .15s ease, color .15s ease, border-color .15s ease, transform .2s cubic-bezier(0.25, 1, 0.5, 1);
     display:inline-flex;
     align-items:center;
     gap:.55rem;
   }
-  .dash-toggle{color:var(--ledger);border:1px solid var(--ledger);}
-  .dash-toggle:hover{background:var(--ledger);color:var(--paper);}
-  .cs-toggle{color:var(--gold);border:1px solid var(--gold);}
-  .cs-toggle:hover{background:var(--gold);color:var(--paper);}
+  /* Button colours: outline at rest, filled on hover.
+     Case study = black, Excel model = Excel green, dashboard = Power BI yellow */
+  .dash-toggle, .cs-toggle, .xl-toggle{border:1px solid;}
+  .dash-toggle svg rect, .xl-toggle svg rect, .xl-toggle svg path{transition:fill .15s ease, stroke .15s ease;}
+
+  .cs-toggle{color:var(--ink);border-color:var(--ink);}
+  .cs-toggle:hover{background:#191C1A;border-color:#191C1A;color:#FFFFFF;}
+  [data-theme="dark"] .cs-toggle:hover{background:#000000;border-color:#000000;}
+
+  .xl-toggle{color:#1D6F42;border-color:#1D6F42;}
+  .xl-toggle svg rect{fill:#1D6F42;}
+  .xl-toggle svg path{stroke:#FFFFFF;}
+  .xl-toggle:hover{background:#1D6F42;color:#FFFFFF;}
+  .xl-toggle:hover svg rect{fill:#FFFFFF;}
+  .xl-toggle:hover svg path{stroke:#1D6F42;}
+  [data-theme="dark"] .xl-toggle{color:#33C481;border-color:#33C481;}
+  [data-theme="dark"] .xl-toggle:hover{background:#1D6F42;border-color:#1D6F42;color:#FFFFFF;}
+
+  .dash-toggle{color:#9A7300;border-color:#E0B000;}
+  .dash-toggle svg rect{fill:#F2C811;}
+  .dash-toggle:hover{background:#F2C811;border-color:#F2C811;color:#191C1A;}
+  .dash-toggle:hover svg rect{fill:#191C1A;}
+  [data-theme="dark"] .dash-toggle{color:#F2C811;border-color:#F2C811;}
+  [data-theme="dark"] .dash-toggle:hover{color:#191C1A;}
 
   /* Case Study */
   .case-study{
@@ -728,7 +759,7 @@
 
   <h2 id="projects-section">Projects</h2>
 
-  <div class="project reveal" data-skills="python sql jupyter-notebook power-bi financial-modeling ratio-analysis financial-statement-analysis">
+  <div class="project reveal" data-skills="python sql jupyter-notebook power-bi financial-modeling forecasting ratio-analysis financial-statement-analysis">
     <h3><a class="cursor-trigger" href="https://github.com/vinhdang111/french-equities-financial-analysis" target="_blank">French Equities Financial Analysis <svg class="gh-mark" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.38-2.03 1.02-2.75-.1-.26-.44-1.31.1-2.73 0 0 .83-.27 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.32 2.75-1.05 2.75-1.05.54 1.42.2 2.47.1 2.73.64.72 1.02 1.63 1.02 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg></a><span class="tag live">Live</span></h3>
     <p>End-to-end financial analytics covering ~50 major French-listed companies (CAC 40 / SBF 120). SQL for structured storage, Python for cleaning and revenue-growth forecasting, Power BI for an interactive dashboard.</p>
     <div class="stack"><b>Stack —</b> Python, SQL, Jupyter Notebook, Power BI</div>
@@ -740,9 +771,9 @@
       </button>
       <button class="dash-toggle magnetic" data-label-open="Hide dashboard" data-label-closed="View live dashboard" onclick="toggleDash('dash-fr', this)">
         <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-          <rect x="3" y="10" width="4" height="11" rx="1" fill="#F2C811"/>
-          <rect x="10" y="6" width="4" height="15" rx="1" fill="#F2C811"/>
-          <rect x="17" y="2" width="4" height="19" rx="1" fill="#F2C811"/>
+          <rect x="3" y="10" width="4" height="11" rx="1" fill="currentColor"/>
+          <rect x="10" y="6" width="4" height="15" rx="1" fill="currentColor"/>
+          <rect x="17" y="2" width="4" height="19" rx="1" fill="currentColor"/>
         </svg>
         <span class="dash-toggle-text">View live dashboard</span>
       </button>
@@ -797,24 +828,86 @@
     </div>
   </div>
 
-  <div class="project reveal" data-skills="excel power-bi dax budgeting scenario-analysis variance-analysis financial-modeling financial-statement-analysis">
+  <div class="project reveal" data-skills="excel power-bi dax budgeting forecasting scenario-analysis sensitivity-analysis variance-analysis financial-modeling financial-statement-analysis">
     <h3><a class="cursor-trigger" href="https://github.com/vinhdang111/nestle-fpa-analysis" target="_blank">Nestlé FP&amp;A Case Study <svg class="gh-mark" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.38-2.03 1.02-2.75-.1-.26-.44-1.31.1-2.73 0 0 .83-.27 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.32 2.75-1.05 2.75-1.05.54 1.42.2 2.47.1 2.73.64.72 1.02 1.63 1.02 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg></a><span class="tag live">Live</span></h3>
-    <p>End-to-end FP&amp;A workflow on Nestlé's real public financials: a driver-based FY2025 budget under Adverse / Base / Favorable scenarios, built only from information available before the year, then tested against Nestlé's actual FY2025 results with a full variance analysis and driver backtest. Business case in progress.</p>
+    <p>End-to-end FP&amp;A workflow on Nestlé's real public financials: a driver-based FY2025 budget under Adverse / Base / Favorable scenarios, built only from information available before the year, then tested against Nestlé's actual FY2025 results with a full variance analysis and driver backtest. The lessons feed a full-year FY2026 reforecast built on Nestlé's latest H1-2026 guidance, stress-tested with an interactive FX / COGS sensitivity in a 5-page Power BI dashboard.</p>
     <div class="stack"><b>Stack —</b> Excel, Power BI (DAX)</div>
-    <div class="highlights"><b>Highlights —</b> Organic growth beat the budget (3.5% vs 3.0%), but a −5.7% FX headwind against a flat assumption turned planned +3.0% sales growth into a −2.0% decline · net profit landed 14.8% below the Base budget · backtest found 6 of 10 budget drivers outside their tested range</div>
+    <div class="highlights"><b>Highlights —</b> Organic growth beat the budget (3.5% vs 3.0%), but a −5.7% FX headwind against a flat assumption turned planned +3.0% sales growth into a −2.0% decline · sensitivity analysis shows how the FY2026 forecast moves with FX and COGS %</div>
     <div class="project-actions">
+      <button class="cs-toggle magnetic" data-label-open="Hide case study" data-label-closed="Read case study" onclick="toggleDash('cs-nestle', this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M14 3v5h5"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" d="M8 12.5h8M8 15.5h8M8 18.5h5"/></svg>
+        <span class="dash-toggle-text">Read case study</span>
+      </button>
+      <button class="xl-toggle magnetic" data-label-open="Hide Excel model" data-label-closed="View Excel model" onclick="toggleDash('xl-nestle', this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="2.5" fill="#FFFFFF"/>
+          <path d="M8.2 7.5l7.6 9M15.8 7.5l-7.6 9" stroke="#1D6F42" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <span class="dash-toggle-text">View Excel model</span>
+      </button>
       <button class="dash-toggle magnetic" data-label-open="Hide dashboard" data-label-closed="View live dashboard" onclick="toggleDash('dash-nestle', this)">
         <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-          <rect x="3" y="10" width="4" height="11" rx="1" fill="#F2C811"/>
-          <rect x="10" y="6" width="4" height="15" rx="1" fill="#F2C811"/>
-          <rect x="17" y="2" width="4" height="19" rx="1" fill="#F2C811"/>
+          <rect x="3" y="10" width="4" height="11" rx="1" fill="currentColor"/>
+          <rect x="10" y="6" width="4" height="15" rx="1" fill="currentColor"/>
+          <rect x="17" y="2" width="4" height="19" rx="1" fill="currentColor"/>
         </svg>
         <span class="dash-toggle-text">View live dashboard</span>
       </button>
     </div>
 
+    <div id="xl-nestle" hidden>
+      <div class="embed embed-xl">
+        <iframe title="Nestle_FPA_Excel_Model" src="https://view.officeapps.live.com/op/embed.aspx?src=https://raw.githubusercontent.com/vinhdang111/nestle-fpa-analysis/main/excel_model/Nestle_Data_Foundation.xlsx" frameborder="0" allowFullScreen="true"></iframe>
+      </div>
+      <a class="embed-link" href="https://view.officeapps.live.com/op/view.aspx?src=https://raw.githubusercontent.com/vinhdang111/nestle-fpa-analysis/main/excel_model/Nestle_Data_Foundation.xlsx" target="_blank" rel="noopener">Open the workbook full screen ↗</a>
+    </div>
+
     <div class="embed" id="dash-nestle" hidden>
-      <iframe title="Nestle_FPA_Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiMGQwODRlMjEtNDY5Zi00M2MxLTgyYWUtZDEwZWM5OGY1ZmI1IiwidCI6Ijk2OTJhM2QzLTJhMDgtNGVjOC1hMGJkLTFkYjM1NWViNDIzMCIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>
+      <iframe title="Nestle_FPA_Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiMGQwODRlMjEtNDY5Zi00M2MxLTgyYWUtZDEwZWM5OGY1ZmI1IiwidCI6Ijk2OTJhM2QzLTJhMDgtNGVjOC1hMGJkLTFkYjM1NWViNDIzMCIsImMiOjh9&amp;pageName=overview" frameborder="0" allowFullScreen="true"></iframe>
+    </div>
+
+    <div class="case-study" id="cs-nestle" hidden>
+      <div class="cs-section">
+        <h4>Problem</h4>
+        <p>A budget is only useful if someone checks it against what actually happened, and most budgets are never tested that way. This project plans Nestlé's FY2025 using only what was public on 13 February 2025, measures that plan against the results Nestlé published a year later, and then uses what went wrong to reforecast FY2026. The question running through it: which assumptions can a finance team control, and which ones should it stress-test instead of trying to predict?</p>
+      </div>
+
+      <div class="cs-section">
+        <h4>Approach</h4>
+        <ol class="cs-steps">
+          <li><b>Data foundation</b> — rebuilt Nestlé's segment and category sales and the full income statement and cash flow statement line by line for FY2021–FY2024 from the audited financial statements, with every subtotal calculated by formula.</li>
+          <li><b>FY2025 budget</b> — a driver-based model with ~40 assumptions covering the full P&amp;L and cash flow, under Adverse / Base / Favorable scenarios; the ten key drivers are flexed across ranges sized from four years of history.</li>
+          <li><b>Variance analysis &amp; backtest</b> — FY2025 actual vs the Base budget: a sales bridge (volume, pricing, M&amp;A, FX), line-by-line P&amp;L and cash flow variances, and a test of whether each flexed driver actually landed inside its scenario range.</li>
+          <li><b>FY2026 reforecast &amp; sensitivity</b> — a full-year reforecast built on Nestlé's latest guidance (H1-2026 results, 23 July 2026), then one-way and two-way sensitivity on the two drivers that missed most in FY2025: FX and COGS.</li>
+          <li><b>Dashboard</b> — a 5-page Power BI dashboard (Overview, Budget Scenarios, Variance Analysis, Backtest, FY2026 Reforecast). On the last page, FX and COGS sliders re-run the FY2026 income statement in DAX, reconciled to the Excel model.</li>
+        </ol>
+      </div>
+
+      <div class="cs-section">
+        <h4>Key decisions &amp; constraints</h4>
+        <ul class="cs-decisions">
+          <li><b>No hindsight</b> — the FY2025 budget uses only information disclosed on 13 February 2025, and the scenario ranges were not touched after the actuals came out, so the variance is a real miss, not a fitted one.</li>
+          <li>Used Nestlé's own growth framework (organic growth = volume + pricing; reported growth adds M&amp;A and FX), so the variance can be read in the same terms management uses. Nestlé only guided total organic growth (3.0%), so the volume / pricing split is a documented own assumption.</li>
+          <li>Kept the budget at Group level: Nestlé moved from 5 to 3 geographic zones on 1 January 2025, so a zone-level variance would not compare like with like.</li>
+          <li>Showed Nestlé's reported free cash flow next to a derived figure instead of forcing them to match, since Nestlé's definition includes adjustments it doesn't disclose separately.</li>
+        </ul>
+      </div>
+
+      <div class="cs-section">
+        <h4>Key findings</h4>
+        <div class="cs-findings">
+          <div class="cs-finding"><b>An FX story</b> — organic growth beat the budget (<span class="cs-num" data-target="3.5" data-decimals="1">0</span>% vs 3.0%), but a −<span class="cs-num" data-target="5.7" data-decimals="1">0</span>% currency hit against a flat assumption turned planned +3.0% sales growth into a −2.0% decline.</div>
+          <div class="cs-finding"><b>Profit margin</b> — net profit margin came in at 10.1% vs 11.3% budgeted (−<span class="cs-num" data-target="118" data-decimals="0">0</span> bps), with net profit 14.8% below plan: COGS ran 151 bps above budget as coffee and cocoa costs peaked, and higher impairments and weaker associates income added to the gap.</div>
+          <div class="cs-finding"><b>Backtest</b> — <span class="cs-num" data-target="6" data-decimals="0">0</span> of 10 flexed drivers landed outside their tested range. The totals still fell inside the scenarios only because the misses partly offset each other.</div>
+          <div class="cs-finding"><b>FY2026 reforecast</b> — sales +0.6% to CHF 90.0bn with 3.5% organic growth, inside Nestlé's 3–4% guidance, but the net profit margin falls to <span class="cs-num" data-target="9.0" data-decimals="1">0</span>% (−112 bps) because of a CHF 1.3bn non-cash write-down on businesses being sold. Free cash flow of CHF 10.7bn stays above the CHF 9bn guidance floor.</div>
+          <div class="cs-finding"><b>Sensitivity</b> — FX changes the size of profit, COGS changes the margin. Each 1 pp of FX moves net profit by ~CHF 82m while the net profit margin stays around 9.0%; each 10 bps of COGS moves it by ~CHF <span class="cs-num" data-target="64" data-decimals="0">0</span>m. Net profit only gets back to its FY2025 level if COGS falls about 150 bps, to 52.1% of sales.</div>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h4>Takeaway</h4>
+        <p>The budget got the operating business roughly right; it missed on what management doesn't control: currency, commodity costs and one-offs. So the reforecast doesn't try to out-guess those. It takes Nestlé's own latest FX view and puts the exposure on a slider instead. For Nestlé's profit margin, COGS is the lever that matters: 10 bps of it is worth almost a full point of currency.</p>
+      </div>
     </div>
   </div>
 
@@ -837,7 +930,9 @@
       <div class="skill-pills">
         <span class="skill-pill" data-skill="financial-modeling">Financial Modeling</span>
         <span class="skill-pill" data-skill="budgeting">Budgeting</span>
+        <span class="skill-pill" data-skill="forecasting">Forecasting</span>
         <span class="skill-pill" data-skill="scenario-analysis">Scenario Analysis</span>
+        <span class="skill-pill" data-skill="sensitivity-analysis">Sensitivity Analysis</span>
         <span class="skill-pill" data-skill="variance-analysis">Variance Analysis</span>
         <span class="skill-pill" data-skill="financial-statement-analysis">Financial Statement Analysis</span>
         <span class="skill-pill" data-skill="ratio-analysis">Ratio Analysis</span>
