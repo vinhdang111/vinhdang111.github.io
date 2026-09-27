@@ -1,6 +1,6 @@
 # Thanh Vinh Dang — Financial Analytics Portfolio
 
-🌐 **LIVE WEBSITE:** [https://vinhdang111.github.io/](https://vinhdang111.github.io/)
+🌐 **LINK PORTFOLIO:** [https://vinhdang111.github.io/](https://vinhdang111.github.io/)
 
 ---
 
