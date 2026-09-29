@@ -896,11 +896,11 @@
       <div class="cs-section">
         <h4>Key findings</h4>
         <div class="cs-findings">
-          <div class="cs-finding"><b>An FX story</b> — organic growth beat the budget (<span class="cs-num" data-target="3.5" data-decimals="1">0</span>% vs 3.0%), but a −<span class="cs-num" data-target="5.7" data-decimals="1">0</span>% currency hit against a flat assumption turned planned +3.0% sales growth into a −2.0% decline.</div>
-          <div class="cs-finding"><b>Profit margin</b> — net profit margin came in at 10.1% vs 11.3% budgeted (−<span class="cs-num" data-target="118" data-decimals="0">0</span> bps), with net profit 14.8% below plan: COGS ran 151 bps above budget as coffee and cocoa costs peaked, and higher impairments and weaker associates income added to the gap.</div>
+          <div class="cs-finding"><b>An FX story</b> — organic growth beat the budget (<span class="cs-num" data-target="3.5" data-decimals="1">0</span>% vs 3.0%), but a −<span class="cs-num" data-target="5.7" data-decimals="1">0</span>% currency hit against a flat assumption turned planned +3.0% sales growth into a −<span class="cs-num" data-target="2.0" data-decimals="1">0</span>% decline.</div>
+          <div class="cs-finding"><b>Profit margin</b> — net profit margin came in at <span class="cs-num" data-target="10.1" data-decimals="1">0</span>% vs <span class="cs-num" data-target="11.3" data-decimals="1">0</span>% budgeted (−<span class="cs-num" data-target="118" data-decimals="0">0</span> bps), with net profit <span class="cs-num" data-target="14.8" data-decimals="1">0</span>% below plan: COGS ran 151 bps above budget as coffee and cocoa costs peaked, and higher impairments and weaker associates income added to the gap.</div>
           <div class="cs-finding"><b>Backtest</b> — <span class="cs-num" data-target="6" data-decimals="0">0</span> of 10 flexed drivers landed outside their tested range. The totals still fell inside the scenarios only because the misses partly offset each other.</div>
-          <div class="cs-finding"><b>FY2026 reforecast</b> — sales +0.6% to CHF 90.0bn with 3.5% organic growth, inside Nestlé's 3–4% guidance, but the net profit margin falls to <span class="cs-num" data-target="9.0" data-decimals="1">0</span>% (−112 bps) because of a CHF 1.3bn non-cash write-down on businesses being sold. Free cash flow of CHF 10.7bn stays above the CHF 9bn guidance floor.</div>
-          <div class="cs-finding"><b>Sensitivity</b> — FX changes the size of profit, COGS changes the margin. Each 1 pp of FX moves net profit by ~CHF 82m while the net profit margin stays around 9.0%; each 10 bps of COGS moves it by ~CHF <span class="cs-num" data-target="64" data-decimals="0">0</span>m. Net profit only gets back to its FY2025 level if COGS falls about 150 bps, to 52.1% of sales.</div>
+          <div class="cs-finding"><b>FY2026 reforecast</b> — sales +<span class="cs-num" data-target="0.6" data-decimals="1">0</span>% to CHF <span class="cs-num" data-target="90.0" data-decimals="1">0</span>bn with <span class="cs-num" data-target="3.5" data-decimals="1">0</span>% organic growth, inside Nestlé's 3–4% guidance, but the net profit margin falls to <span class="cs-num" data-target="9.0" data-decimals="1">0</span>% (−112 bps) because of a CHF 1.3bn non-cash write-down on businesses being sold. Free cash flow of CHF <span class="cs-num" data-target="10.7" data-decimals="1">0</span>bn stays above the CHF 9bn guidance floor.</div>
+          <div class="cs-finding"><b>Sensitivity</b> — FX changes the size of profit, COGS changes the margin. Each 1 pp of FX moves net profit by ~CHF <span class="cs-num" data-target="82" data-decimals="0">0</span>m while the net profit margin stays around 9.0%; each 10 bps of COGS moves it by ~CHF <span class="cs-num" data-target="64" data-decimals="0">0</span>m. Net profit only gets back to its FY2025 level if COGS falls about <span class="cs-num" data-target="150" data-decimals="0">0</span> bps, to 52.1% of sales.</div>
         </div>
       </div>
 
@@ -1092,24 +1092,24 @@ function toggleDash(id, btn){
   }
 }
 
-// Watch for the Key Findings numbers scrolling into view, then count them up once
+// Watch each Key Findings row; count its numbers up once when that row scrolls into view
 function observeCaseStudyNumbers(panel){
-  var target = panel.querySelector('.cs-findings');
-  if(!target) return;
+  var rows = panel.querySelectorAll('.cs-finding');
+  if(!rows.length) return;
   var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
       if(entry.isIntersecting){
-        animateCaseStudyNumbers(panel);
+        animateCaseStudyNumbers(entry.target);
         obs.unobserve(entry.target);
       }
     });
-  },{threshold:0.4});
-  obs.observe(target);
+  },{threshold:0.6});
+  rows.forEach(function(row){ obs.observe(row); });
 }
 
-// Gentle count-up (0 -> target) for the numbers in Key Findings
-function animateCaseStudyNumbers(panel){
-  var nums = panel.querySelectorAll('.cs-num[data-target]');
+// Gentle count-up (0 -> target) for the numbers inside one finding row
+function animateCaseStudyNumbers(scope){
+  var nums = scope.querySelectorAll('.cs-num[data-target]');
   nums.forEach(function(el, i){
     var target = parseFloat(el.getAttribute('data-target'));
     var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
