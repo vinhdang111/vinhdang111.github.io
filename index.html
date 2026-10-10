@@ -607,6 +607,33 @@
   .cs-num.cs-num-in{
     opacity:1;
   }
+
+  /* Mini charts inside Key Findings (animate when the row scrolls into view) */
+  .vz{margin:.6rem 0 .2rem;font-size:.74rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;max-width:56ch;}
+  .vz-cap{margin-bottom:.35rem;letter-spacing:.02em;}
+  .vz-row{display:grid;grid-template-columns:8.5rem 1fr 3.2rem;align-items:center;gap:.5rem;margin:.22rem 0;}
+  .vz-val{text-align:right;color:var(--ink);}
+  .vz-track{position:relative;height:9px;background:var(--line);border-radius:5px;overflow:visible;}
+  .vz-fill{position:absolute;top:0;bottom:0;left:0;width:0;border-radius:5px;transition:width 1s cubic-bezier(.2,.8,.2,1) .15s;}
+  .vz-fill.good,.vz-tally .good,.vz-legend .good,.vz-dot.good{background:var(--ledger);}
+  .vz-fill.bad,.vz-tally .bad,.vz-legend .bad,.vz-dot.bad{background:var(--gold);}
+  .vz-div::before{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:var(--muted);}
+  .vz-fill.neg{left:auto;right:50%;border-radius:5px 0 0 5px;}
+  .vz-fill.pos{left:50%;border-radius:0 5px 5px 0;}
+  .viz-in .vz-fill{width:var(--w);}
+  .vz-luck::after{content:"";position:absolute;left:22%;top:-4px;bottom:-4px;border-left:1.5px dashed var(--ink);opacity:.55;}
+  .vz-note{margin-top:.3rem;font-size:.7rem;}
+  .vz-tally{display:flex;flex-wrap:wrap;gap:3px;}
+  .vz-tally span{width:12px;height:12px;border-radius:3px;opacity:0;transform:scale(.3);transition:opacity .35s ease,transform .35s ease;transition-delay:calc(var(--i) * 45ms + .15s);}
+  .viz-in .vz-tally span{opacity:1;transform:scale(1);}
+  .vz-legend{display:flex;gap:1rem;margin-top:.35rem;}
+  .vz-legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:.35rem;vertical-align:-1px;}
+  .vz-rank{background:repeating-linear-gradient(90deg,var(--line) 0 calc(100%/15 - 2px),transparent calc(100%/15 - 2px) calc(100%/15));}
+  .vz-dot{position:absolute;top:50%;left:0;width:18px;height:18px;margin:-9px 0 0 -2px;border-radius:50%;color:#fff;font-size:.65rem;display:flex;align-items:center;justify-content:center;opacity:0;transition:left 1.1s cubic-bezier(.2,.8,.2,1) .15s,opacity .3s ease .15s;}
+  .viz-in .vz-dot{left:var(--x);opacity:1;}
+  .vz-rank + .vz-val{display:none;}
+  @media (prefers-reduced-motion: reduce){.vz-fill,.vz-tally span,.vz-dot{transition:none;}}
+  @media (max-width:560px){.vz-row{grid-template-columns:6.5rem 1fr 2.8rem;}}
   .case-study code{
     font-family:'IBM Plex Mono',monospace;
     font-size:.85em;
@@ -911,9 +938,101 @@
     </div>
   </div>
 
-  <div class="project soon reveal" data-skills="">
-    <h3>Project 3<span class="tag">Planned</span></h3>
-    <p>Details coming soon.</p>
+  <div class="project reveal" data-skills="python sql jupyter-notebook power-bi dax forecasting machine-learning statistical-testing risk-management">
+    <h3><a class="cursor-trigger" href="https://github.com/vinhdang111/european-volatility-forecasting" target="_blank">European Equity Volatility Forecasting <svg class="gh-mark" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.38-2.03 1.02-2.75-.1-.26-.44-1.31.1-2.73 0 0 .83-.27 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.32 2.75-1.05 2.75-1.05.54 1.42.2 2.47.1 2.73.64.72 1.02 1.63 1.02 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg></a><span class="tag live">Live</span></h3>
+    <p>Benchmark of 15 volatility forecasting models, from simple rules and GARCH to LightGBM and LSTM / Transformer neural networks, on 50 large European stocks and 9 equity indices over 20 years of out-of-sample forecasts. The forecasts are then put to work in a Value-at-Risk backtest, and the results are presented in a 4-page Power BI dashboard on PostgreSQL views.</p>
+    <div class="stack"><b>Stack —</b> Python (pandas, LightGBM, PyTorch), PostgreSQL, SQL, Jupyter Notebook, Power BI (DAX)</div>
+    <div class="highlights"><b>Highlights —</b> Machine learning beats the best classical model only at 1 day, by 1.3–2.4% · an equal-weight average of five models is the one reliable improvement (better in 19 of 21 years) · any volatility model cuts the share of Basel "non-green" years from 37% to 16–19% vs historical simulation</div>
+    <div class="project-actions">
+      <button class="cs-toggle magnetic" data-label-open="Hide case study" data-label-closed="Read case study" onclick="toggleDash('cs-vol', this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M14 3v5h5"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" d="M8 12.5h8M8 15.5h8M8 18.5h5"/></svg>
+        <span class="dash-toggle-text">Read case study</span>
+      </button>
+      <button class="dash-toggle magnetic" data-label-open="Hide dashboard" data-label-closed="View live dashboard" onclick="toggleDash('dash-vol', this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="10" width="4" height="11" rx="1" fill="currentColor"/>
+          <rect x="10" y="6" width="4" height="15" rx="1" fill="currentColor"/>
+          <rect x="17" y="2" width="4" height="19" rx="1" fill="currentColor"/>
+        </svg>
+        <span class="dash-toggle-text">View live dashboard</span>
+      </button>
+    </div>
+
+    <div class="embed" id="dash-vol" hidden>
+      <iframe title="european_volatility_dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiZTIxNWU1Y2EtZjY1ZC00Zjc0LTg0NTgtOTYxY2ZlMzkzOGYxIiwidCI6Ijk2OTJhM2QzLTJhMDgtNGVjOC1hMGJkLTFkYjM1NWViNDIzMCIsImMiOjh9&amp;pageName=cfe0b6f215b6788585de" frameborder="0" allowFullScreen="true"></iframe>
+    </div>
+
+    <div class="case-study" id="cs-vol" hidden>
+      <div class="cs-section">
+        <h4>Problem</h4>
+        <p>Banks, asset managers and regulators size risk with volatility forecasts every day, and machine learning is often presented as the way to make them better. But most comparisons pit a complex model against a weak benchmark, on a single market, without testing whether the gain is real. This project asks the question properly: do machine learning and deep learning beat the best classical model, is the difference statistically significant in calm and in crisis periods, and does a better forecast actually give a better risk limit?</p>
+      </div>
+
+      <div class="cs-section">
+        <h4>Approach</h4>
+        <ol class="cs-steps">
+          <li><b>Data &amp; storage</b> — 26 years of daily prices for 50 stocks, 9 indices and the VIX from <code>yfinance</code>, stored in PostgreSQL; nine documented cleaning rules with every correction logged.</li>
+          <li><b>Features</b> — a range-based measure of daily variance, 18 features (own and market-wide volatility, returns, volume, VIX) and targets at 1 day, 1 week and 1 month, with unit tests against look-ahead.</li>
+          <li><b>Models</b> — 5 baselines, GARCH, GJR-GARCH, HAR and HAR-X, LightGBM (alone and as a correction to HAR-X), LSTM and Transformer networks in PyTorch, and two model combinations: 15 models re-estimated every year in a walk-forward backtest (2006–2026).</li>
+          <li><b>Statistical comparison</b> — QLIKE loss, Diebold-Mariano tests and the Model Confidence Set, results split by calm and crisis periods.</li>
+          <li><b>Value-at-Risk</b> — every forecast turned into a 1-day VaR and backtested on 293,000 daily returns (Kupiec and Christoffersen tests, Basel traffic light, quantile loss).</li>
+          <li><b>Dashboard</b> — a 4-page Power BI dashboard (Model performance, Forecast explorer, Value-at-Risk, Summary) on thirteen SQL views, with 60 DAX measures.</li>
+        </ol>
+      </div>
+
+      <div class="cs-section">
+        <h4>Key decisions &amp; constraints</h4>
+        <ul class="cs-decisions">
+          <li><b>No look-ahead</b> — each year is forecast by models trained only on earlier data, hyperparameters are tuned inside the training window, and an embargo stops training targets from overlapping the test year.</li>
+          <li><b>A demanding benchmark</b> — every advanced model is compared with HAR-X, the best classical model, which uses the same information: the gap measures what the algorithm adds, not extra data.</li>
+          <li><b>Loss fixed before the results</b> — QLIKE penalises under-estimating risk more than over-estimating it. With a symmetric error (MAE), a different model would have "won".</li>
+          <li>Used the VIX as the implied-volatility input, since VSTOXX, its European equivalent, has no free source.</li>
+        </ul>
+      </div>
+
+      <div class="cs-section">
+        <h4>Key findings</h4>
+        <div class="cs-findings">
+          <div class="cs-finding"><b>Small gains</b> — at 1 day, machine learning and deep learning beat HAR-X by only <span class="cs-num" data-target="1.3" data-decimals="1">0</span>–<span class="cs-num" data-target="1.9" data-decimals="1">0</span>%, and their average by <span class="cs-num" data-target="2.4" data-decimals="1">0</span>% (p &lt; 0.01). At 1 week the single models are level with it (p = 0.56–0.91), and at 1 month HAR-X is the best model, with LightGBM <span class="cs-num" data-target="8" data-decimals="0">0</span>% behind.
+            <div class="vz">
+              <div class="vz-cap">Ensemble (Mean) vs HAR-X, QLIKE (left = better)</div>
+              <div class="vz-row"><span class="vz-lab">1 day</span><span class="vz-track vz-div"><span class="vz-fill good neg" style="--w:48%"></span></span><span class="vz-val">−2.4%</span></div>
+              <div class="vz-row"><span class="vz-lab">1 week</span><span class="vz-track vz-div"><span class="vz-fill good neg" style="--w:36%"></span></span><span class="vz-val">−1.8%</span></div>
+              <div class="vz-row"><span class="vz-lab">1 month</span><span class="vz-track vz-div"><span class="vz-fill bad pos" style="--w:30%"></span></span><span class="vz-val">+1.5%</span></div>
+            </div>
+          </div>
+          <div class="cs-finding"><b>Combine, don't pick</b> — the average of the five advanced models beats HAR-X in <span class="cs-num" data-target="19" data-decimals="0">0</span> of <span class="cs-num" data-target="21" data-decimals="0">0</span> test years. Single models fail in different years: the LSTM is <span class="cs-num" data-target="47" data-decimals="0">0</span>% worse than HAR-X in 2009, the Transformer <span class="cs-num" data-target="24" data-decimals="0">0</span>% worse in 2020, while the average is never more than <span class="cs-num" data-target="6" data-decimals="0">0</span>% behind.
+            <div class="vz">
+              <div class="vz-cap">Test years 2006–2026, 1-week forecasts: average of five models vs HAR-X</div>
+              <div class="vz-tally"><span class="good" style="--i:0"></span><span class="good" style="--i:1"></span><span class="good" style="--i:2"></span><span class="good" style="--i:3"></span><span class="good" style="--i:4"></span><span class="good" style="--i:5"></span><span class="good" style="--i:6"></span><span class="good" style="--i:7"></span><span class="good" style="--i:8"></span><span class="good" style="--i:9"></span><span class="good" style="--i:10"></span><span class="good" style="--i:11"></span><span class="good" style="--i:12"></span><span class="good" style="--i:13"></span><span class="good" style="--i:14"></span><span class="good" style="--i:15"></span><span class="good" style="--i:16"></span><span class="good" style="--i:17"></span><span class="good" style="--i:18"></span><span class="bad" style="--i:19"></span><span class="bad" style="--i:20"></span></div>
+              <div class="vz-legend"><span><i class="good"></i>better (19)</span><span><i class="bad"></i>worse (2)</span></div>
+            </div>
+          </div>
+          <div class="cs-finding"><b>Accurate ≠ safe</b> — the Transformer has the lowest average error at 1 week (<span class="cs-num" data-target="6.3" data-decimals="2">0</span> volatility points against <span class="cs-num" data-target="6.41" data-decimals="2">0</span> for HAR-X) and ranks <span class="cs-num" data-target="3" data-decimals="0">0</span>rd of 15 in calm markets, but only <span class="cs-num" data-target="7" data-decimals="0">0</span>th in crises, where its QLIKE is <span class="cs-num" data-target="7.5" data-decimals="1">0</span>% worse than HAR-X: it stays too low exactly when volatility jumps.
+            <div class="vz">
+              <div class="vz-cap">Transformer's rank among 15 models, QLIKE at 1 week (1 = best)</div>
+              <div class="vz-row"><span class="vz-lab">Calm</span><span class="vz-track vz-rank"><span class="vz-dot good" style="--x:14.3%">3</span></span></div>
+              <div class="vz-row"><span class="vz-lab">Crisis</span><span class="vz-track vz-rank"><span class="vz-dot bad" style="--x:42.9%">7</span></span></div>
+            </div>
+          </div>
+          <div class="cs-finding"><b>Value-at-Risk</b> — historical simulation is outside the Basel green zone in <span class="cs-num" data-target="37" data-decimals="0">0</span>% of years, the best volatility models in <span class="cs-num" data-target="16" data-decimals="0">0</span>–<span class="cs-num" data-target="19" data-decimals="0">0</span>% (a correct VaR is outside <span class="cs-num" data-target="11" data-decimals="0">0</span>% of the time by bad luck alone). A better forecast gives the same protection with a <span class="cs-num" data-target="19" data-decimals="0">0</span>% smaller limit: <span class="cs-num" data-target="4.3" data-decimals="2">0</span>% of the position for HAR-X against <span class="cs-num" data-target="5.3" data-decimals="2">0</span>% for the naive forecast.
+            <div class="vz">
+              <div class="vz-cap">Share of years outside the Basel green zone, 99% VaR</div>
+              <div class="vz-row"><span class="vz-lab">Hist. simulation</span><span class="vz-track vz-luck"><span class="vz-fill bad" style="--w:74%"></span></span><span class="vz-val">37%</span></div>
+              <div class="vz-row"><span class="vz-lab">HAR-X</span><span class="vz-track vz-luck"><span class="vz-fill good" style="--w:38%"></span></span><span class="vz-val">19%</span></div>
+              <div class="vz-row"><span class="vz-lab">Ensemble (Mean)</span><span class="vz-track vz-luck"><span class="vz-fill good" style="--w:34%"></span></span><span class="vz-val">17%</span></div>
+              <div class="vz-note">Dashed line: 11%, a correct VaR by bad luck alone</div>
+            </div>
+          </div>
+          <div class="cs-finding"><b>Measure first</b> — HAR-X, a linear regression, is <span class="cs-num" data-target="14" data-decimals="0">0</span>–<span class="cs-num" data-target="20" data-decimals="0">0</span>% more accurate than the best simple rule, and feeding that rule a range-based measure of volatility instead of squared returns already lowers its QLIKE by <span class="cs-num" data-target="8" data-decimals="0">0</span>–<span class="cs-num" data-target="16" data-decimals="0">0</span>%. Good data and inputs did more than any algorithm.</div>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h4>Takeaway</h4>
+        <p>Measuring volatility well and choosing the right inputs matter far more than the algorithm. For 1 to 5 days, the average of the five models; for a month, HAR-X alone. If a risk team can maintain only one model, HAR-X: within 2.4% of the best at every horizon, estimated in seconds, with 18 coefficients that can be read and explained.</p>
+      </div>
+    </div>
   </div>
 
   <div class="project soon reveal" data-skills="">
@@ -936,6 +1055,7 @@
         <span class="skill-pill" data-skill="variance-analysis">Variance Analysis</span>
         <span class="skill-pill" data-skill="financial-statement-analysis">Financial Statement Analysis</span>
         <span class="skill-pill" data-skill="ratio-analysis">Ratio Analysis</span>
+        <span class="skill-pill" data-skill="risk-management">Risk Management (VaR)</span>
       </div>
     </div>
     <div>
@@ -944,6 +1064,8 @@
         <span class="skill-pill" data-skill="sql">SQL</span>
         <span class="skill-pill" data-skill="python">Python (pandas, scikit-learn)</span>
         <span class="skill-pill" data-skill="jupyter-notebook">Jupyter Notebook</span>
+        <span class="skill-pill" data-skill="machine-learning">Machine Learning (LightGBM, PyTorch)</span>
+        <span class="skill-pill" data-skill="statistical-testing">Statistical Testing</span>
         <span class="skill-pill" data-skill="power-bi">Power BI</span>
         <span class="skill-pill" data-skill="dax">DAX &amp; Data Modeling</span>
         <span class="skill-pill" data-skill="excel">Excel</span>
@@ -1109,6 +1231,7 @@ function observeCaseStudyNumbers(panel){
 
 // Gentle count-up (0 -> target) for the numbers inside one finding row
 function animateCaseStudyNumbers(scope){
+  scope.classList.add('viz-in');
   var nums = scope.querySelectorAll('.cs-num[data-target]');
   nums.forEach(function(el, i){
     var target = parseFloat(el.getAttribute('data-target'));
@@ -1134,6 +1257,7 @@ function animateCaseStudyNumbers(scope){
 }
 
 function resetCaseStudyNumbers(panel){
+  panel.querySelectorAll('.cs-finding').forEach(function(row){ row.classList.remove('viz-in'); });
   panel.querySelectorAll('.cs-num[data-target]').forEach(function(el){
     var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
     el.classList.remove('cs-num-in');
