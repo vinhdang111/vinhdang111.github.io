@@ -623,6 +623,7 @@
   .viz-in .vz-fill{width:var(--w);}
   .vz-luck::after{content:"";position:absolute;left:22%;top:-4px;bottom:-4px;border-left:1.5px dashed var(--ink);opacity:.55;}
   .vz-note{margin-top:.3rem;font-size:.7rem;}
+  .vz-tally.dense span{width:10px;height:10px;transition-delay:calc(var(--i) * 18ms + .15s);}
   .vz-tally{display:flex;flex-wrap:wrap;gap:3px;}
   .vz-tally span{width:12px;height:12px;border-radius:3px;opacity:0;transform:scale(.3);transition:opacity .35s ease,transform .35s ease;transition-delay:calc(var(--i) * 45ms + .15s);}
   .viz-in .vz-tally span{opacity:1;transform:scale(1);}
@@ -841,10 +842,24 @@
       <div class="cs-section">
         <h4>Key findings</h4>
         <div class="cs-findings">
-          <div class="cs-finding"><b>Profitability</b> — Financial Services has the highest median net margin (~<span class="cs-num" data-target="17.6" data-decimals="1">0</span>%); Consumer Cyclical the lowest (~<span class="cs-num" data-target="1.0" data-decimals="1">0</span>%), reflecting thin retail/auto margins vs. banking economics.</div>
+          <div class="cs-finding"><b>Profitability</b> — Financial Services has the highest median net margin (~<span class="cs-num" data-target="17.6" data-decimals="1">0</span>%); Consumer Cyclical the lowest (~<span class="cs-num" data-target="1.0" data-decimals="1">0</span>%), reflecting thin retail/auto margins vs. banking economics.
+            <div class="vz">
+              <div class="vz-cap">Median net margin by sector, latest fiscal year</div>
+              <div class="vz-row"><span class="vz-lab">Fin. Services</span><span class="vz-track"><span class="vz-fill good" style="--w:88%"></span></span><span class="vz-val">17.6%</span></div>
+              <div class="vz-row"><span class="vz-lab">Cons. Defensive</span><span class="vz-track"><span class="vz-fill good" style="--w:51.5%"></span></span><span class="vz-val">10.3%</span></div>
+              <div class="vz-row"><span class="vz-lab">Healthcare</span><span class="vz-track"><span class="vz-fill good" style="--w:48.5%"></span></span><span class="vz-val">9.7%</span></div>
+              <div class="vz-row"><span class="vz-lab">Cons. Cyclical</span><span class="vz-track"><span class="vz-fill bad" style="--w:5%"></span></span><span class="vz-val">1.0%</span></div>
+            </div>
+          </div>
           <div class="cs-finding"><b>ROE outlier</b> — Atos shows an extreme ROE (~<span class="cs-num" data-target="178" data-decimals="0">0</span>%) driven by near-zero equity, not genuine outperformance — a reminder to always read ROE against its equity base. Excluding it, Safran, Bureau Veritas, and Hermès lead.</div>
-          <div class="cs-finding"><b>Growth</b> — <span class="cs-num" data-target="36" data-decimals="0">0</span>% of companies (18 of 50) posted negative YoY revenue growth, concentrated in Technology, Consumer Cyclical, and Energy.</div>
-          <div class="cs-finding"><b>Model result</b> — Random Forest outperformed Ridge on cross-validated R² (0.09 vs. −0.08); FCF margin proved a stronger predictor of next-year growth than ROE or net margin — visually confirmed by the Forecast page's trend lines.</div>
+          <div class="cs-finding"><b>Growth</b> — <span class="cs-num" data-target="36" data-decimals="0">0</span>% of companies (<span class="cs-num" data-target="18" data-decimals="0">0</span> of <span class="cs-num" data-target="50" data-decimals="0">0</span>) posted negative YoY revenue growth, concentrated in Technology, Consumer Cyclical, and Energy.
+            <div class="vz">
+              <div class="vz-cap">YoY revenue growth, most recent fiscal year, one square per company</div>
+              <div class="vz-tally dense"><span class="good" style="--i:0"></span><span class="good" style="--i:1"></span><span class="good" style="--i:2"></span><span class="good" style="--i:3"></span><span class="good" style="--i:4"></span><span class="good" style="--i:5"></span><span class="good" style="--i:6"></span><span class="good" style="--i:7"></span><span class="good" style="--i:8"></span><span class="good" style="--i:9"></span><span class="good" style="--i:10"></span><span class="good" style="--i:11"></span><span class="good" style="--i:12"></span><span class="good" style="--i:13"></span><span class="good" style="--i:14"></span><span class="good" style="--i:15"></span><span class="good" style="--i:16"></span><span class="good" style="--i:17"></span><span class="good" style="--i:18"></span><span class="good" style="--i:19"></span><span class="good" style="--i:20"></span><span class="good" style="--i:21"></span><span class="good" style="--i:22"></span><span class="good" style="--i:23"></span><span class="good" style="--i:24"></span><span class="good" style="--i:25"></span><span class="good" style="--i:26"></span><span class="good" style="--i:27"></span><span class="good" style="--i:28"></span><span class="good" style="--i:29"></span><span class="good" style="--i:30"></span><span class="good" style="--i:31"></span><span class="bad" style="--i:32"></span><span class="bad" style="--i:33"></span><span class="bad" style="--i:34"></span><span class="bad" style="--i:35"></span><span class="bad" style="--i:36"></span><span class="bad" style="--i:37"></span><span class="bad" style="--i:38"></span><span class="bad" style="--i:39"></span><span class="bad" style="--i:40"></span><span class="bad" style="--i:41"></span><span class="bad" style="--i:42"></span><span class="bad" style="--i:43"></span><span class="bad" style="--i:44"></span><span class="bad" style="--i:45"></span><span class="bad" style="--i:46"></span><span class="bad" style="--i:47"></span><span class="bad" style="--i:48"></span><span class="bad" style="--i:49"></span></div>
+              <div class="vz-legend"><span><i class="good"></i>growth (32)</span><span><i class="bad"></i>decline (18)</span></div>
+            </div>
+          </div>
+          <div class="cs-finding"><b>Model result</b> — Random Forest outperformed Ridge on cross-validated R² (<span class="cs-num" data-target="0.09" data-decimals="2">0.00</span> vs. −<span class="cs-num" data-target="0.08" data-decimals="2">0.00</span>); FCF margin proved a stronger predictor of next-year growth than ROE or net margin — visually confirmed by the Forecast page's trend lines.</div>
         </div>
       </div>
 
@@ -923,11 +938,25 @@
       <div class="cs-section">
         <h4>Key findings</h4>
         <div class="cs-findings">
-          <div class="cs-finding"><b>An FX story</b> — organic growth beat the budget (<span class="cs-num" data-target="3.5" data-decimals="1">0</span>% vs 3.0%), but a −<span class="cs-num" data-target="5.7" data-decimals="1">0</span>% currency hit against a flat assumption turned planned +3.0% sales growth into a −<span class="cs-num" data-target="2.0" data-decimals="1">0</span>% decline.</div>
-          <div class="cs-finding"><b>Profit margin</b> — net profit margin came in at <span class="cs-num" data-target="10.1" data-decimals="1">0</span>% vs <span class="cs-num" data-target="11.3" data-decimals="1">0</span>% budgeted (−<span class="cs-num" data-target="118" data-decimals="0">0</span> bps), with net profit <span class="cs-num" data-target="14.8" data-decimals="1">0</span>% below plan: COGS ran 151 bps above budget as coffee and cocoa costs peaked, and higher impairments and weaker associates income added to the gap.</div>
-          <div class="cs-finding"><b>Backtest</b> — <span class="cs-num" data-target="6" data-decimals="0">0</span> of 10 flexed drivers landed outside their tested range. The totals still fell inside the scenarios only because the misses partly offset each other.</div>
-          <div class="cs-finding"><b>FY2026 reforecast</b> — sales +<span class="cs-num" data-target="0.6" data-decimals="1">0</span>% to CHF <span class="cs-num" data-target="90.0" data-decimals="1">0</span>bn with <span class="cs-num" data-target="3.5" data-decimals="1">0</span>% organic growth, inside Nestlé's 3–4% guidance, but the net profit margin falls to <span class="cs-num" data-target="9.0" data-decimals="1">0</span>% (−112 bps) because of a CHF 1.3bn non-cash write-down on businesses being sold. Free cash flow of CHF <span class="cs-num" data-target="10.7" data-decimals="1">0</span>bn stays above the CHF 9bn guidance floor.</div>
-          <div class="cs-finding"><b>Sensitivity</b> — FX changes the size of profit, COGS changes the margin. Each 1 pp of FX moves net profit by ~CHF <span class="cs-num" data-target="82" data-decimals="0">0</span>m while the net profit margin stays around 9.0%; each 10 bps of COGS moves it by ~CHF <span class="cs-num" data-target="64" data-decimals="0">0</span>m. Net profit only gets back to its FY2025 level if COGS falls about <span class="cs-num" data-target="150" data-decimals="0">0</span> bps, to 52.1% of sales.</div>
+          <div class="cs-finding"><b>An FX story</b> — organic growth beat the budget (<span class="cs-num" data-target="3.5" data-decimals="1">0</span>% vs <span class="cs-num" data-target="3.0" data-decimals="1">0.0</span>%), but a −<span class="cs-num" data-target="5.7" data-decimals="1">0</span>% currency hit against a flat assumption turned planned +<span class="cs-num" data-target="3.0" data-decimals="1">0.0</span>% sales growth into a −<span class="cs-num" data-target="2.0" data-decimals="1">0</span>% decline.
+            <div class="vz">
+              <div class="vz-cap">FY2025 sales growth: budget, then actual (left of 0 = decline)</div>
+              <div class="vz-row"><span class="vz-lab">Budget</span><span class="vz-track vz-div"><span class="vz-fill good pos" style="--w:25%"></span></span><span class="vz-val">+3.0%</span></div>
+              <div class="vz-row"><span class="vz-lab">Organic</span><span class="vz-track vz-div"><span class="vz-fill good pos" style="--w:29.2%"></span></span><span class="vz-val">+3.5%</span></div>
+              <div class="vz-row"><span class="vz-lab">FX</span><span class="vz-track vz-div"><span class="vz-fill bad neg" style="--w:47.5%"></span></span><span class="vz-val">−5.7%</span></div>
+              <div class="vz-row"><span class="vz-lab">Reported</span><span class="vz-track vz-div"><span class="vz-fill bad neg" style="--w:16.7%"></span></span><span class="vz-val">−2.0%</span></div>
+            </div>
+          </div>
+          <div class="cs-finding"><b>Profit margin</b> — net profit margin came in at <span class="cs-num" data-target="10.1" data-decimals="1">0</span>% vs <span class="cs-num" data-target="11.3" data-decimals="1">0</span>% budgeted (−<span class="cs-num" data-target="118" data-decimals="0">0</span> bps), with net profit <span class="cs-num" data-target="14.8" data-decimals="1">0</span>% below plan: COGS ran <span class="cs-num" data-target="151" data-decimals="0">0</span> bps above budget as coffee and cocoa costs peaked, and higher impairments and weaker associates income added to the gap.</div>
+          <div class="cs-finding"><b>Backtest</b> — <span class="cs-num" data-target="6" data-decimals="0">0</span> of <span class="cs-num" data-target="10" data-decimals="0">0</span> flexed drivers landed outside their tested range. The totals still fell inside the scenarios only because the misses partly offset each other.</div>
+          <div class="cs-finding"><b>FY2026 reforecast</b> — sales +<span class="cs-num" data-target="0.6" data-decimals="1">0</span>% to CHF <span class="cs-num" data-target="90.0" data-decimals="1">0</span>bn with <span class="cs-num" data-target="3.5" data-decimals="1">0</span>% organic growth, inside Nestlé's <span class="cs-num" data-target="3" data-decimals="0">0</span>–<span class="cs-num" data-target="4" data-decimals="0">0</span>% guidance, but the net profit margin falls to <span class="cs-num" data-target="9.0" data-decimals="1">0</span>% (−<span class="cs-num" data-target="112" data-decimals="0">0</span> bps) because of a CHF <span class="cs-num" data-target="1.3" data-decimals="1">0.0</span>bn non-cash write-down on businesses being sold. Free cash flow of CHF <span class="cs-num" data-target="10.7" data-decimals="1">0</span>bn stays above the CHF <span class="cs-num" data-target="9" data-decimals="0">0</span>bn guidance floor.</div>
+          <div class="cs-finding"><b>Sensitivity</b> — FX changes the size of profit, COGS changes the margin. Each 1 pp of FX moves net profit by ~CHF <span class="cs-num" data-target="82" data-decimals="0">0</span>m while the net profit margin stays around <span class="cs-num" data-target="9.0" data-decimals="1">0.0</span>%; each 10 bps of COGS moves it by ~CHF <span class="cs-num" data-target="64" data-decimals="0">0</span>m. Net profit only gets back to its FY2025 level if COGS falls about <span class="cs-num" data-target="150" data-decimals="0">0</span> bps, to <span class="cs-num" data-target="52.1" data-decimals="1">0.0</span>% of sales.
+            <div class="vz">
+              <div class="vz-cap">FY2026 net profit impact per step (CHF m)</div>
+              <div class="vz-row"><span class="vz-lab">1 pp of FX</span><span class="vz-track"><span class="vz-fill bad" style="--w:91.1%"></span></span><span class="vz-val">~82</span></div>
+              <div class="vz-row"><span class="vz-lab">10 bps of COGS</span><span class="vz-track"><span class="vz-fill good" style="--w:71.1%"></span></span><span class="vz-val">~64</span></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -938,7 +967,7 @@
     </div>
   </div>
 
-  <div class="project reveal" data-skills="python sql jupyter-notebook power-bi dax forecasting machine-learning statistical-testing risk-management">
+  <div class="project reveal" data-skills="python sql jupyter-notebook power-bi dax forecasting machine-learning deep-learning statistical-testing risk-management">
     <h3><a class="cursor-trigger" href="https://github.com/vinhdang111/european-volatility-forecasting" target="_blank">European Equity Volatility Forecasting <svg class="gh-mark" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.21-3.37-1.21-.46-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.38-2.03 1.02-2.75-.1-.26-.44-1.31.1-2.73 0 0 .83-.27 2.75 1.05a9.3 9.3 0 0 1 2.5-.35c.85 0 1.71.12 2.5.35 1.91-1.32 2.75-1.05 2.75-1.05.54 1.42.2 2.47.1 2.73.64.72 1.02 1.63 1.02 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg></a><span class="tag live">Live</span></h3>
     <p>Benchmark of 15 volatility forecasting models, from simple rules and GARCH to LightGBM and LSTM / Transformer neural networks, on 50 large European stocks and 9 equity indices over 20 years of out-of-sample forecasts. The forecasts are then put to work in a Value-at-Risk backtest, and the results are presented in a 4-page Power BI dashboard on PostgreSQL views.</p>
     <div class="stack"><b>Stack —</b> Python (pandas, LightGBM, PyTorch), PostgreSQL, SQL, Jupyter Notebook, Power BI (DAX)</div>
@@ -1064,7 +1093,8 @@
         <span class="skill-pill" data-skill="sql">SQL</span>
         <span class="skill-pill" data-skill="python">Python (pandas, scikit-learn)</span>
         <span class="skill-pill" data-skill="jupyter-notebook">Jupyter Notebook</span>
-        <span class="skill-pill" data-skill="machine-learning">Machine Learning (LightGBM, PyTorch)</span>
+        <span class="skill-pill" data-skill="machine-learning">Machine Learning (LightGBM)</span>
+        <span class="skill-pill" data-skill="deep-learning">Deep Learning (PyTorch)</span>
         <span class="skill-pill" data-skill="statistical-testing">Statistical Testing</span>
         <span class="skill-pill" data-skill="power-bi">Power BI</span>
         <span class="skill-pill" data-skill="dax">DAX &amp; Data Modeling</span>
