@@ -616,32 +616,6 @@
   }
 
   /* Mini charts inside Key Findings (animate when the row scrolls into view) */
-  .vz{margin:.6rem 0 .2rem;font-size:.74rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;max-width:56ch;}
-  .vz-cap{margin-bottom:.35rem;letter-spacing:.02em;}
-  .vz-row{display:grid;grid-template-columns:8.5rem 1fr 3.2rem;align-items:center;gap:.5rem;margin:.22rem 0;}
-  .vz-val{text-align:right;color:var(--ink);}
-  .vz-track{position:relative;height:9px;background:var(--line);border-radius:5px;overflow:visible;}
-  .vz-fill{position:absolute;top:0;bottom:0;left:0;width:0;border-radius:5px;transition:width 1s cubic-bezier(.2,.8,.2,1) .15s;}
-  .vz-fill.good,.vz-tally .good,.vz-legend .good,.vz-dot.good{background:var(--ledger);}
-  .vz-fill.bad,.vz-tally .bad,.vz-legend .bad,.vz-dot.bad{background:var(--gold);}
-  .vz-div::before{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:var(--muted);}
-  .vz-fill.neg{left:auto;right:50%;border-radius:5px 0 0 5px;}
-  .vz-fill.pos{left:50%;border-radius:0 5px 5px 0;}
-  .viz-in .vz-fill{width:var(--w);}
-  .vz-luck::after{content:"";position:absolute;left:22%;top:-4px;bottom:-4px;border-left:1.5px dashed var(--ink);opacity:.55;}
-  .vz-note{margin-top:.3rem;font-size:.7rem;}
-  .vz-tally.dense span{width:10px;height:10px;transition-delay:calc(var(--i) * 18ms + .15s);}
-  .vz-tally{display:flex;flex-wrap:wrap;gap:3px;}
-  .vz-tally span{width:12px;height:12px;border-radius:3px;opacity:0;transform:scale(.3);transition:opacity .35s ease,transform .35s ease;transition-delay:calc(var(--i) * 45ms + .15s);}
-  .viz-in .vz-tally span{opacity:1;transform:scale(1);}
-  .vz-legend{display:flex;gap:1rem;margin-top:.35rem;}
-  .vz-legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:.35rem;vertical-align:-1px;}
-  .vz-rank{background:repeating-linear-gradient(90deg,var(--line) 0 calc(100%/15 - 2px),transparent calc(100%/15 - 2px) calc(100%/15));}
-  .vz-dot{position:absolute;top:50%;left:0;width:18px;height:18px;margin:-9px 0 0 -2px;border-radius:50%;color:#fff;font-size:.65rem;display:flex;align-items:center;justify-content:center;opacity:0;transition:left 1.1s cubic-bezier(.2,.8,.2,1) .15s,opacity .3s ease .15s;}
-  .viz-in .vz-dot{left:var(--x);opacity:1;}
-  .vz-rank + .vz-val{display:none;}
-  @media (prefers-reduced-motion: reduce){.vz-fill,.vz-tally span,.vz-dot{transition:none;}}
-  @media (max-width:560px){.vz-row{grid-template-columns:6.5rem 1fr 2.8rem;}}
   .case-study code{
     font-family:'IBM Plex Mono',monospace;
     font-size:.85em;
@@ -849,23 +823,9 @@
       <div class="cs-section">
         <h4>Key findings</h4>
         <div class="cs-findings">
-          <div class="cs-finding"><b>Profitability</b> — Financial Services has the highest median net margin (~<span class="cs-num" data-target="17.6" data-decimals="1">0</span>%); Consumer Cyclical the lowest (~<span class="cs-num" data-target="1.0" data-decimals="1">0</span>%), reflecting thin retail/auto margins vs. banking economics.
-            <div class="vz">
-              <div class="vz-cap">Median net margin by sector, latest fiscal year</div>
-              <div class="vz-row"><span class="vz-lab">Fin. Services</span><span class="vz-track"><span class="vz-fill good" style="--w:88%"></span></span><span class="vz-val">17.6%</span></div>
-              <div class="vz-row"><span class="vz-lab">Cons. Defensive</span><span class="vz-track"><span class="vz-fill good" style="--w:51.5%"></span></span><span class="vz-val">10.3%</span></div>
-              <div class="vz-row"><span class="vz-lab">Healthcare</span><span class="vz-track"><span class="vz-fill good" style="--w:48.5%"></span></span><span class="vz-val">9.7%</span></div>
-              <div class="vz-row"><span class="vz-lab">Cons. Cyclical</span><span class="vz-track"><span class="vz-fill bad" style="--w:5%"></span></span><span class="vz-val">1.0%</span></div>
-            </div>
-          </div>
+          <div class="cs-finding"><b>Profitability</b> — Financial Services has the highest median net margin (~<span class="cs-num" data-target="17.6" data-decimals="1">0</span>%); Consumer Cyclical the lowest (~<span class="cs-num" data-target="1.0" data-decimals="1">0</span>%), reflecting thin retail/auto margins vs. banking economics.</div>
           <div class="cs-finding"><b>ROE outlier</b> — Atos shows an extreme ROE (~<span class="cs-num" data-target="178" data-decimals="0">0</span>%) driven by near-zero equity, not genuine outperformance — a reminder to always read ROE against its equity base. Excluding it, Safran, Bureau Veritas, and Hermès lead.</div>
-          <div class="cs-finding"><b>Growth</b> — <span class="cs-num" data-target="36" data-decimals="0">0</span>% of companies (<span class="cs-num" data-target="18" data-decimals="0">0</span> of <span class="cs-num" data-target="50" data-decimals="0">0</span>) posted negative YoY revenue growth, concentrated in Technology, Consumer Cyclical, and Energy.
-            <div class="vz">
-              <div class="vz-cap">YoY revenue growth, most recent fiscal year, one square per company</div>
-              <div class="vz-tally dense"><span class="good" style="--i:0"></span><span class="good" style="--i:1"></span><span class="good" style="--i:2"></span><span class="good" style="--i:3"></span><span class="good" style="--i:4"></span><span class="good" style="--i:5"></span><span class="good" style="--i:6"></span><span class="good" style="--i:7"></span><span class="good" style="--i:8"></span><span class="good" style="--i:9"></span><span class="good" style="--i:10"></span><span class="good" style="--i:11"></span><span class="good" style="--i:12"></span><span class="good" style="--i:13"></span><span class="good" style="--i:14"></span><span class="good" style="--i:15"></span><span class="good" style="--i:16"></span><span class="good" style="--i:17"></span><span class="good" style="--i:18"></span><span class="good" style="--i:19"></span><span class="good" style="--i:20"></span><span class="good" style="--i:21"></span><span class="good" style="--i:22"></span><span class="good" style="--i:23"></span><span class="good" style="--i:24"></span><span class="good" style="--i:25"></span><span class="good" style="--i:26"></span><span class="good" style="--i:27"></span><span class="good" style="--i:28"></span><span class="good" style="--i:29"></span><span class="good" style="--i:30"></span><span class="good" style="--i:31"></span><span class="bad" style="--i:32"></span><span class="bad" style="--i:33"></span><span class="bad" style="--i:34"></span><span class="bad" style="--i:35"></span><span class="bad" style="--i:36"></span><span class="bad" style="--i:37"></span><span class="bad" style="--i:38"></span><span class="bad" style="--i:39"></span><span class="bad" style="--i:40"></span><span class="bad" style="--i:41"></span><span class="bad" style="--i:42"></span><span class="bad" style="--i:43"></span><span class="bad" style="--i:44"></span><span class="bad" style="--i:45"></span><span class="bad" style="--i:46"></span><span class="bad" style="--i:47"></span><span class="bad" style="--i:48"></span><span class="bad" style="--i:49"></span></div>
-              <div class="vz-legend"><span><i class="good"></i>growth (32)</span><span><i class="bad"></i>decline (18)</span></div>
-            </div>
-          </div>
+          <div class="cs-finding"><b>Growth</b> — <span class="cs-num" data-target="36" data-decimals="0">0</span>% of companies (<span class="cs-num" data-target="18" data-decimals="0">0</span> of <span class="cs-num" data-target="50" data-decimals="0">0</span>) posted negative YoY revenue growth, concentrated in Technology, Consumer Cyclical, and Energy.</div>
           <div class="cs-finding"><b>Model result</b> — Random Forest outperformed Ridge on cross-validated R² (<span class="cs-num" data-target="0.09" data-decimals="2">0.00</span> vs. −<span class="cs-num" data-target="0.08" data-decimals="2">0.00</span>); FCF margin proved a stronger predictor of next-year growth than ROE or net margin — visually confirmed by the Forecast page's trend lines.</div>
         </div>
       </div>
@@ -945,25 +905,11 @@
       <div class="cs-section">
         <h4>Key findings</h4>
         <div class="cs-findings">
-          <div class="cs-finding"><b>An FX story</b> — organic growth beat the budget (<span class="cs-num" data-target="3.5" data-decimals="1">0</span>% vs <span class="cs-num" data-target="3.0" data-decimals="1">0.0</span>%), but a −<span class="cs-num" data-target="5.7" data-decimals="1">0</span>% currency hit against a flat assumption turned planned +<span class="cs-num" data-target="3.0" data-decimals="1">0.0</span>% sales growth into a −<span class="cs-num" data-target="2.0" data-decimals="1">0</span>% decline.
-            <div class="vz">
-              <div class="vz-cap">FY2025 sales growth: budget, then actual (left of 0 = decline)</div>
-              <div class="vz-row"><span class="vz-lab">Budget</span><span class="vz-track vz-div"><span class="vz-fill good pos" style="--w:25%"></span></span><span class="vz-val">+3.0%</span></div>
-              <div class="vz-row"><span class="vz-lab">Organic</span><span class="vz-track vz-div"><span class="vz-fill good pos" style="--w:29.2%"></span></span><span class="vz-val">+3.5%</span></div>
-              <div class="vz-row"><span class="vz-lab">FX</span><span class="vz-track vz-div"><span class="vz-fill bad neg" style="--w:47.5%"></span></span><span class="vz-val">−5.7%</span></div>
-              <div class="vz-row"><span class="vz-lab">Reported</span><span class="vz-track vz-div"><span class="vz-fill bad neg" style="--w:16.7%"></span></span><span class="vz-val">−2.0%</span></div>
-            </div>
-          </div>
+          <div class="cs-finding"><b>An FX story</b> — organic growth beat the budget (<span class="cs-num" data-target="3.5" data-decimals="1">0</span>% vs <span class="cs-num" data-target="3.0" data-decimals="1">0.0</span>%), but a −<span class="cs-num" data-target="5.7" data-decimals="1">0</span>% currency hit against a flat assumption turned planned +<span class="cs-num" data-target="3.0" data-decimals="1">0.0</span>% sales growth into a −<span class="cs-num" data-target="2.0" data-decimals="1">0</span>% decline.</div>
           <div class="cs-finding"><b>Profit margin</b> — net profit margin came in at <span class="cs-num" data-target="10.1" data-decimals="1">0</span>% vs <span class="cs-num" data-target="11.3" data-decimals="1">0</span>% budgeted (−<span class="cs-num" data-target="118" data-decimals="0">0</span> bps), with net profit <span class="cs-num" data-target="14.8" data-decimals="1">0</span>% below plan: COGS ran <span class="cs-num" data-target="151" data-decimals="0">0</span> bps above budget as coffee and cocoa costs peaked, and higher impairments and weaker associates income added to the gap.</div>
           <div class="cs-finding"><b>Backtest</b> — <span class="cs-num" data-target="6" data-decimals="0">0</span> of <span class="cs-num" data-target="10" data-decimals="0">0</span> flexed drivers landed outside their tested range. The totals still fell inside the scenarios only because the misses partly offset each other.</div>
           <div class="cs-finding"><b>FY2026 reforecast</b> — sales +<span class="cs-num" data-target="0.6" data-decimals="1">0</span>% to CHF <span class="cs-num" data-target="90.0" data-decimals="1">0</span>bn with <span class="cs-num" data-target="3.5" data-decimals="1">0</span>% organic growth, inside Nestlé's <span class="cs-num" data-target="3" data-decimals="0">0</span>–<span class="cs-num" data-target="4" data-decimals="0">0</span>% guidance, but the net profit margin falls to <span class="cs-num" data-target="9.0" data-decimals="1">0</span>% (−<span class="cs-num" data-target="112" data-decimals="0">0</span> bps) because of a CHF <span class="cs-num" data-target="1.3" data-decimals="1">0.0</span>bn non-cash write-down on businesses being sold. Free cash flow of CHF <span class="cs-num" data-target="10.7" data-decimals="1">0</span>bn stays above the CHF <span class="cs-num" data-target="9" data-decimals="0">0</span>bn guidance floor.</div>
-          <div class="cs-finding"><b>Sensitivity</b> — FX changes the size of profit, COGS changes the margin. Each 1 pp of FX moves net profit by ~CHF <span class="cs-num" data-target="82" data-decimals="0">0</span>m while the net profit margin stays around <span class="cs-num" data-target="9.0" data-decimals="1">0.0</span>%; each 10 bps of COGS moves it by ~CHF <span class="cs-num" data-target="64" data-decimals="0">0</span>m. Net profit only gets back to its FY2025 level if COGS falls about <span class="cs-num" data-target="150" data-decimals="0">0</span> bps, to <span class="cs-num" data-target="52.1" data-decimals="1">0.0</span>% of sales.
-            <div class="vz">
-              <div class="vz-cap">FY2026 net profit impact per step (CHF m)</div>
-              <div class="vz-row"><span class="vz-lab">1 pp of FX</span><span class="vz-track"><span class="vz-fill bad" style="--w:91.1%"></span></span><span class="vz-val">~82</span></div>
-              <div class="vz-row"><span class="vz-lab">10 bps of COGS</span><span class="vz-track"><span class="vz-fill good" style="--w:71.1%"></span></span><span class="vz-val">~64</span></div>
-            </div>
-          </div>
+          <div class="cs-finding"><b>Sensitivity</b> — FX changes the size of profit, COGS changes the margin. Each 1 pp of FX moves net profit by ~CHF <span class="cs-num" data-target="82" data-decimals="0">0</span>m while the net profit margin stays around <span class="cs-num" data-target="9.0" data-decimals="1">0.0</span>%; each 10 bps of COGS moves it by ~CHF <span class="cs-num" data-target="64" data-decimals="0">0</span>m. Net profit only gets back to its FY2025 level if COGS falls about <span class="cs-num" data-target="150" data-decimals="0">0</span> bps, to <span class="cs-num" data-target="52.1" data-decimals="1">0.0</span>% of sales.</div>
         </div>
       </div>
 
@@ -1029,37 +975,10 @@
       <div class="cs-section">
         <h4>Key findings</h4>
         <div class="cs-findings">
-          <div class="cs-finding"><b>Small gains</b> — at 1 day, machine learning and deep learning beat HAR-X by only <span class="cs-num" data-target="1.3" data-decimals="1">0</span>–<span class="cs-num" data-target="1.9" data-decimals="1">0</span>%, and their average by <span class="cs-num" data-target="2.4" data-decimals="1">0</span>% (p &lt; 0.01). At 1 week the single models are level with it (p = 0.56–0.91), and at 1 month HAR-X is the best model, with LightGBM <span class="cs-num" data-target="8" data-decimals="0">0</span>% behind.
-            <div class="vz">
-              <div class="vz-cap">Ensemble (Mean) vs HAR-X, QLIKE (left = better)</div>
-              <div class="vz-row"><span class="vz-lab">1 day</span><span class="vz-track vz-div"><span class="vz-fill good neg" style="--w:48%"></span></span><span class="vz-val">−2.4%</span></div>
-              <div class="vz-row"><span class="vz-lab">1 week</span><span class="vz-track vz-div"><span class="vz-fill good neg" style="--w:36%"></span></span><span class="vz-val">−1.8%</span></div>
-              <div class="vz-row"><span class="vz-lab">1 month</span><span class="vz-track vz-div"><span class="vz-fill bad pos" style="--w:30%"></span></span><span class="vz-val">+1.5%</span></div>
-            </div>
-          </div>
-          <div class="cs-finding"><b>Combine, don't pick</b> — the average of the five advanced models beats HAR-X in <span class="cs-num" data-target="19" data-decimals="0">0</span> of <span class="cs-num" data-target="21" data-decimals="0">0</span> test years. Single models fail in different years: the LSTM is <span class="cs-num" data-target="47" data-decimals="0">0</span>% worse than HAR-X in 2009, the Transformer <span class="cs-num" data-target="24" data-decimals="0">0</span>% worse in 2020, while the average is never more than <span class="cs-num" data-target="6" data-decimals="0">0</span>% behind.
-            <div class="vz">
-              <div class="vz-cap">Test years 2006–2026, 1-week forecasts: average of five models vs HAR-X</div>
-              <div class="vz-tally"><span class="good" style="--i:0"></span><span class="good" style="--i:1"></span><span class="good" style="--i:2"></span><span class="good" style="--i:3"></span><span class="good" style="--i:4"></span><span class="good" style="--i:5"></span><span class="good" style="--i:6"></span><span class="good" style="--i:7"></span><span class="good" style="--i:8"></span><span class="good" style="--i:9"></span><span class="good" style="--i:10"></span><span class="good" style="--i:11"></span><span class="good" style="--i:12"></span><span class="good" style="--i:13"></span><span class="good" style="--i:14"></span><span class="good" style="--i:15"></span><span class="good" style="--i:16"></span><span class="good" style="--i:17"></span><span class="good" style="--i:18"></span><span class="bad" style="--i:19"></span><span class="bad" style="--i:20"></span></div>
-              <div class="vz-legend"><span><i class="good"></i>better (19)</span><span><i class="bad"></i>worse (2)</span></div>
-            </div>
-          </div>
-          <div class="cs-finding"><b>Accurate ≠ safe</b> — the Transformer has the lowest average error at 1 week (<span class="cs-num" data-target="6.3" data-decimals="2">0</span> volatility points against <span class="cs-num" data-target="6.41" data-decimals="2">0</span> for HAR-X) and ranks <span class="cs-num" data-target="3" data-decimals="0">0</span>rd of 15 in calm markets, but only <span class="cs-num" data-target="7" data-decimals="0">0</span>th in crises, where its QLIKE is <span class="cs-num" data-target="7.5" data-decimals="1">0</span>% worse than HAR-X: it stays too low exactly when volatility jumps.
-            <div class="vz">
-              <div class="vz-cap">Transformer's rank among 15 models, QLIKE at 1 week (1 = best)</div>
-              <div class="vz-row"><span class="vz-lab">Calm</span><span class="vz-track vz-rank"><span class="vz-dot good" style="--x:14.3%">3</span></span></div>
-              <div class="vz-row"><span class="vz-lab">Crisis</span><span class="vz-track vz-rank"><span class="vz-dot bad" style="--x:42.9%">7</span></span></div>
-            </div>
-          </div>
-          <div class="cs-finding"><b>Value-at-Risk</b> — historical simulation is outside the Basel green zone in <span class="cs-num" data-target="37" data-decimals="0">0</span>% of years, the best volatility models in <span class="cs-num" data-target="16" data-decimals="0">0</span>–<span class="cs-num" data-target="19" data-decimals="0">0</span>% (a correct VaR is outside <span class="cs-num" data-target="11" data-decimals="0">0</span>% of the time by bad luck alone). A better forecast gives the same protection with a <span class="cs-num" data-target="19" data-decimals="0">0</span>% smaller limit: <span class="cs-num" data-target="4.3" data-decimals="2">0</span>% of the position for HAR-X against <span class="cs-num" data-target="5.3" data-decimals="2">0</span>% for the naive forecast.
-            <div class="vz">
-              <div class="vz-cap">Share of years outside the Basel green zone, 99% VaR</div>
-              <div class="vz-row"><span class="vz-lab">Hist. simulation</span><span class="vz-track vz-luck"><span class="vz-fill bad" style="--w:74%"></span></span><span class="vz-val">37%</span></div>
-              <div class="vz-row"><span class="vz-lab">HAR-X</span><span class="vz-track vz-luck"><span class="vz-fill good" style="--w:38%"></span></span><span class="vz-val">19%</span></div>
-              <div class="vz-row"><span class="vz-lab">Ensemble (Mean)</span><span class="vz-track vz-luck"><span class="vz-fill good" style="--w:34%"></span></span><span class="vz-val">17%</span></div>
-              <div class="vz-note">Dashed line: 11%, a correct VaR by bad luck alone</div>
-            </div>
-          </div>
+          <div class="cs-finding"><b>Small gains</b> — at 1 day, machine learning and deep learning beat HAR-X by only <span class="cs-num" data-target="1.3" data-decimals="1">0</span>–<span class="cs-num" data-target="1.9" data-decimals="1">0</span>%, and their average by <span class="cs-num" data-target="2.4" data-decimals="1">0</span>% (p &lt; 0.01). At 1 week the single models are level with it (p = 0.56–0.91), and at 1 month HAR-X is the best model, with LightGBM <span class="cs-num" data-target="8" data-decimals="0">0</span>% behind.</div>
+          <div class="cs-finding"><b>Combine, don't pick</b> — the average of the five advanced models beats HAR-X in <span class="cs-num" data-target="19" data-decimals="0">0</span> of <span class="cs-num" data-target="21" data-decimals="0">0</span> test years. Single models fail in different years: the LSTM is <span class="cs-num" data-target="47" data-decimals="0">0</span>% worse than HAR-X in 2009, the Transformer <span class="cs-num" data-target="24" data-decimals="0">0</span>% worse in 2020, while the average is never more than <span class="cs-num" data-target="6" data-decimals="0">0</span>% behind.</div>
+          <div class="cs-finding"><b>Accurate ≠ safe</b> — the Transformer has the lowest average error at 1 week (<span class="cs-num" data-target="6.3" data-decimals="2">0</span> volatility points against <span class="cs-num" data-target="6.41" data-decimals="2">0</span> for HAR-X) and ranks <span class="cs-num" data-target="3" data-decimals="0">0</span>rd of 15 in calm markets, but only <span class="cs-num" data-target="7" data-decimals="0">0</span>th in crises, where its QLIKE is <span class="cs-num" data-target="7.5" data-decimals="1">0</span>% worse than HAR-X: it stays too low exactly when volatility jumps.</div>
+          <div class="cs-finding"><b>Value-at-Risk</b> — historical simulation is outside the Basel green zone in <span class="cs-num" data-target="37" data-decimals="0">0</span>% of years, the best volatility models in <span class="cs-num" data-target="16" data-decimals="0">0</span>–<span class="cs-num" data-target="19" data-decimals="0">0</span>% (a correct VaR is outside <span class="cs-num" data-target="11" data-decimals="0">0</span>% of the time by bad luck alone). A better forecast gives the same protection with a <span class="cs-num" data-target="19" data-decimals="0">0</span>% smaller limit: <span class="cs-num" data-target="4.3" data-decimals="2">0</span>% of the position for HAR-X against <span class="cs-num" data-target="5.3" data-decimals="2">0</span>% for the naive forecast.</div>
           <div class="cs-finding"><b>Measure first</b> — HAR-X, a linear regression, is <span class="cs-num" data-target="14" data-decimals="0">0</span>–<span class="cs-num" data-target="20" data-decimals="0">0</span>% more accurate than the best simple rule, and feeding that rule a range-based measure of volatility instead of squared returns already lowers its QLIKE by <span class="cs-num" data-target="8" data-decimals="0">0</span>–<span class="cs-num" data-target="16" data-decimals="0">0</span>%. Good data and inputs did more than any algorithm.</div>
         </div>
       </div>
